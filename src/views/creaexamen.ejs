@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Generar Exámen</title>
+    <% include partials/head %>
+  </head>
+  <body>
+    <% include partials/navigation %>
+
+    <div class="container p-4">
+      <div class="row">
+        <div class="form-group">
+          <div class="card animated flipInY">
+            <div class="card-header bg-dark text-white text-center">
+              <h3>Nuevo examen</h3>
+            </div>
+            <div class="card-body">
+              <form action="/nuevoexamen"  method="post">
+                <div class="form-group">
+                  <input class="pregunta" type="text" name="nombre" size= "60" placeholder="ingrese el nombre del examen" autofocus required>
+                </div>
+                <div class="pregunta"> 
+                  <label for="contenido">Contenido/descripción del examen:</label><br>
+                  <textarea class="pregunta" name="contenido" cols="60" rows="2"></textarea>
+                </div>
+                <div class="pregunta">
+                  <label for="marque">Marque la información que debe proporcionar el estudiante antes de empezar el examen:</label><br>
+                    <input type="checkbox" id="cboxnombre" value="cboxnombre"><label for="cboxnombre">&nbsp; Nombre</label><br>
+                    <input type="checkbox" id="cboxapellido" value="cboxapellido"><label for="cboxapellido">&nbsp; Apellido</label><br>
+                    <input type="checkbox" id="cboxcorreo" value="cboxcorreo" checked required><label for="cboxcorreo">&nbsp; Correo</label><br>
+                    <input type="checkbox" id="cboxclase" value="cboxclase" checked><label for="cboxclase">&nbsp; Clase</label><br>
+                    <input type="checkbox" id="cboxnbreprof" value="cboxnbreprof"><label for="cbonbreprof">&nbsp; Nombre del Profesor/a</label><br>
+                    <input type="checkbox" id="cboxtelef" value="cboxtelef"><label for="cboxtelef">&nbsp; Teléfono</label><br>
+                    <input type="checkbox" id="cboxdni" value="cboxdni"><label for="cboxdni">&nbsp; DNI</label>
+                </div>
+                <table class="pregunta">
+                 <tr> 
+                  <td><label for="preguntexam" id="area" >Preguntas del examen</label></td>
+                  <td><label for="numepreg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Puntaje:</label><i class="glyphicon glyphicon-pencil"></i><input class="form-control" type="number" name="puntaje" id="number" min="1" max="100" step="1" placeholder="1"></td>
+                 </tr> 
+                </table>
+                  <div class="form-group">
+                    <i class="fab fa-tumblr"></i>&nbsp;<input class="pregunta" type="text" name="nombrepreg" size="60" placeholder="ingrese título de la pregunta" autofocus required><br><br>
+                    
+                    <input name="pregunta" type="radio"/>&nbsp;&nbsp;<input class="pregunta" type="text" name="opcionpreg" size="55" placeholder="ingrese opción" autofocus required>
+                    <nav>
+                      <a class="navega" href="/opciones"><i class="fas fa-marker"></i><i class="fas fa-plus"></i>opciones</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="navega" href="/pregunta"><i class="fas fa-plus"></i><i class="fas fa-question"></i>preguntas</a>  
+                    </nav>
+                  </div>
+                                                 
+                  <div class="pregunta">
+                    <label for="image">Adjuntar imagen a la pregunta:</label>&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-file-image"></i>
+                    <input type="url" name="image" class="form-control" placeholder="http://website.com" >
+                  </div>
+                  <div class="pregunta">
+                    <label for="enlace">Adjuntar enlace a la pregunta:</label>&nbsp;&nbsp;&nbsp;<i class="fa fa-link"></i>
+                    <input type="url" name="enlace" class="form-control" placeholder="http://website.com" >
+                 
+                    <label for="secc">Número de sección:</label>&nbsp;<input class="pregunta" type="number" name="nrosecc" id="number" min="1" max="100" step="1" placeholder="1" autofocus required><br>
+                  
+                    <label for="cod" id="area">Area de trabajo del estudiante:</label><br>
+                    <input type="checkbox" id="cboxescritura" value="cboxescritura"><i class="keyboard"></i>
+                    <label for="cboxarea">&nbsp;Dar al estudiante un área para que escriba sus respuestas</label>&nbsp;
+                  </div>  
+                  <div class="pregunta">
+                    <input type="checkbox" id="cboxcodprog" value="cboxcodprog">&nbsp;<label for="cod">Permitir Código de programación:</label>&nbsp;
+                    <select name="codprog" size="1">
+                      <option>Python</option>
+                      <option>JavaScript</option>
+                      <option>C</option>
+                    </select>
+                  </div>
+              
+                <div class="pregunta">
+                  <button class="btn btn-primary btn-block">
+                    Guardar
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% include partials/footer %>
+  </body>
+</html>

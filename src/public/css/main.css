@@ -1,0 +1,94 @@
+body {
+  background: #7474BF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.navbar-brand {
+  font-family: 'Spicy Rice', cursive;
+  font-size: 1.5rem;
+}
+
+.nav-link {
+  text-transform: uppercase;
+  font-family: 'Spicy Rice', cursive;
+}
+
+header img {
+  width: 60%;
+}
+
+#number {
+  width: 4em;
+}
+
+#area {
+  font-family: 'Spicy Rice', cursive;
+  font-size: 2rem;
+}
+.navega {
+  font-family: 'Spicy Rice', cursive;
+  font-size: 1.25rem;
+}
+.pregunta{
+  font-family: 'Spicy Rice', cursive;
+  font-size: 1rem;
+}
+.floating-form-group {
+  position: relative;
+  margin-bottom: 40px;
+}
+.floating-component {
+  width: 650px;
+}
+.floating-form-control,
+        .floating-select {
+            font-size: 14px;
+            padding: 4px 4px;
+            display: block;
+            width: 100%;
+            height: 30px;
+            background-color: transparent;
+            border: none;
+            border-bottom: 2px solid #cccccc;
+        }
+.floating-textarea {
+    min-height: 30px;
+    max-height: 260px;
+    overflow: hidden;
+    overflow-x: hidden;
+}
+.highlight {
+  position: absolute;
+  height: 50%;
+  width: 100%;
+  top: 15%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+.fullscreen{
+  position:absolute;
+  top:15%;
+  left:0;
+  bottom:15%;
+  right:0;
+  height:80%;
+  width:100%;
+}
+tableexamenes{ 
+  width: 100%;
+  border: 1px solid #000;
+  background: #fff;
+}
+
+th, td {
+  width: 25%;
+  text-align: left;
+  vertical-align: top;
+  border: 1px solid #000;
+  border-collapse: collapse;
+  padding: 0.3em;
+  caption-side: bottom;
+  background: #fff;
+}

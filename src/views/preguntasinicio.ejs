@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <% include partials/head %>
+  </head>
+  <body>
+    <% include partials/navigation %>
+    <div class="fullscreen">
+      <div class="container p-5">
+      <div class="floating-component">
+      <div class="pregunta">
+      <div class="card card-body text-center"><h3>Preguntas</h3></div>  
+          <form method="POST" action="/nuevapregunta" class="card card-body">
+          <div class="form-group">
+          <div class="floating-form-group">
+            <select class="floating-select" name="seccion" onclick="this.setAttribute('value', this.value);" value="" required>
+                <option value="">Elegir Sección</option>
+                <%long=(JSON.parse(dats)).secciones.length;%>  
+                <%for (index=0; index<long; index++){%>
+                  <option value="<%= (JSON.parse(dats)).secciones[index].nombre;%>"><%= (JSON.parse(dats)).secciones[index].nombre;%></option>
+                <%}%>
+            </select>
+            <span class="highlight"></span>
+          </div>
+          </div>
+          <div class="form-group">
+          <div class="floating-form-group">
+              <input class="floating-form-control" name="title" type="text" value="Pregunta sin título" required>
+              <span class="highlight"></span>
+          </div>
+          </div>
+          <div class="form-group">
+          <div class="floating-form-group">
+            <textarea class="floating-form-control floating-textarea" name="descripcion">Descripción de la pregunta</textarea>
+            <span class="highlight"></span>
+          </div>
+          </div>
+          <div class="form-group">
+            <div class="floating-form-group">
+             <p>Añadir archivo a la pregunta:<input type="file" name="archivossubidos"></p>
+             <p>Añadir imagen a la pregunta:<input type="file" name="imagensubida" accept="image/png, .jpeg, .jpg, image/gif"></p>
+             <p>Añadir enlace a la pregunta:<input type="url" name="urlsubida" placeholder="http://website.com"></p>
+            </div>
+          </div> 
+          <div class="form-group">
+          <div class="floating-form-group">
+            <p>Tipo de respuesta a la pregunta:</p>
+            <div class="form-group">
+              <input type="submit" name="opciones" onclick="this.setAttribute('value', this.value);" value="Varias opciones" class="floating-select">
+            </div>
+            <div class="form-group">
+              <input type="submit" name="opciones" onclick="alert('Pregunta guardada con éxito');" value="Respuesta corta" class="floating-select">
+            </div>
+            <div class="form-group">
+              <input type="submit" name="opciones" onclick="alert('Pregunta guardada con éxito');" value="Código de programa" class="floating-select">
+            </div>
+            <div class="form-group">
+              <input type="submit" name="opciones" onclick="alert('Pregunta guardada con éxito');" value="Cargar archivos" class="floating-select">
+            </div>
+            <span class="highlight"></span>
+          </div>
+          </div>
+          </form>
+  </div></div></div></div>
+  </body>
+</html>
