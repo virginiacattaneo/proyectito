@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Listado de secciones</title>
+    <% include partials/head %>
+  </head>
+  <body>
+    <% include partials/navigation %>
+    <div class="container p-5">
+      <div class="row">
+        <div class="col-sm-4 offset-md-4">
+          <div class="card animated flipInY">
+            <div class="card-header bg-dark text-white text-center">
+              <h3>Sección</h3>
+            </div>
+            <div class="container p-4">
+            <%long=(JSON.parse(dats)).secciones.length;%>  
+            <%for (index=0; index<long; index++){%>
+              
+                <div class="form-group">Nombre de la sección:
+                  <%= (JSON.parse(dats)).secciones[index].nombre;%>
+                </div>
+                </div>               
+               
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% include partials/footer %>
+  </body>
+</html>
