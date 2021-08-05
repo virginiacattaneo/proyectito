@@ -93,13 +93,12 @@ th, td {
   background: #fff;
 }
 div.contenedor {
-  width: 100%;
-  
+  width: 100%; 
 }
 button.centrado {
-  width: 110px; /* Para que no se rompa en dos líneas, y lo translade tal cual. */
+  width: 110px; 
   margin-left: 50%;
   transform: translateX(-50%);
-  background-color: #348AC7
+  background-color: #008CBA
 }
 
