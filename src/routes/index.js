@@ -26,6 +26,7 @@ router.get('/pregseccion', (req, res) => {
   //const dataA = fs.readFileSync('src/alumnos.json', 'utf-8');
   //var jsonA = JSON.stringify(JSON.parse(dataA)); //convert it back to json
   res.render('pregseccion', { dats: json});
+  
 })
 
 router.post('/generarexamenfinal', (req, res) => {

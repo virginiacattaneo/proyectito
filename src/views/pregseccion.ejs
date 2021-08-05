@@ -2,32 +2,36 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Listado de secciones</title>
+    <title>Listado preguntas por Secciones</title>
     <% include partials/head %>
   </head>
   <body>
     <% include partials/navigation %>
+    
     <div class="container p-5">
       <div class="row">
-        <div class="col-sm-4 offset-md-4">
-          <div class="card animated flipInY">
-            <div class="card-header bg-dark text-white text-center">
-              <h3>Sección</h3>
-            </div>
-            <div class="container p-4">
-            <%long=(JSON.parse(dats)).secciones.length;%>  
-            <%for (index=0; index<long; index++){%>
-              
-                <div class="form-group">Nombre de la sección:
-                  <%= (JSON.parse(dats)).secciones[index].nombre;%>
-                </div>
-                </div>               
-               
+        <div >
+          <div >
+            <div >
+              <h2>Listado de preguntas por secciones</h2>
+              <table class="pregseccion">
+                <tr>
+                  <th class="th"><p>Seccion probando si actualiza</p></th>
+                  <th class="th"><p>Preguntas</p></th> 
+                </tr>
+                <%long=(JSON.parse(dats)).table.length%>  
+                <%for (index=0; index<long; index++){%>       
+              </table>
+              <tr>
+                <td class="td"><p> <%= (JSON.parse(dats)).table[index].seccion;%></p></td>
+                </tr>
+
+
             </div>
           </div>
         </div>
       </div>
     </div>
-  <% include partials/footer %>
+    <% include partials/footer %>
   </body>
 </html>
