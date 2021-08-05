@@ -35,25 +35,6 @@
               </div>
               </div>
               <div class="form-group">
-                <div class="floating-form-group">
-                  <%if ((JSON.parse(dats)).table[long].archivossubidos == ''){%>
-                    <p>Añadir archivo a la pregunta:<input type="file" name="archivossubidos"></p>
-                  <%}else{%>
-                    <p>Archivo de la pregunta:<input type="text" name="archivossubidos" value= "<%= (JSON.parse(dats)).table[long].archivossubidos;%>"></p>
-                  <%}%>
-                  <%if ((JSON.parse(dats)).table[long].imagensubida == ''){%>
-                    <p>Añadir imagen a la pregunta:<input type="file" name="imagensubida" accept="image/png, .jpeg, .jpg, image/gif"></p>
-                  <%}else{%>  
-                   <p>Imagen de la pregunta:<input type="text" name="imagensubida" accept="image/png, .jpeg, .jpg, image/gif" value= "<%= (JSON.parse(dats)).table[long].imagensubida;%>"></p>
-                  <%}%> 
-                  <%if ((JSON.parse(dats)).table[long].urlsubida == ''){%>
-                    <p>Añadir enlace a la pregunta:<input type="url" name="urlsubida" placeholder="http://website.com"></p>
-                  <%}else{%>
-                    <p>Enlace de la pregunta:<input type="text" name="urlsubida" value= "<%= (JSON.parse(dats)).table[long].urlsubida;%>"></p>
-                  <%}%> 
-                </div>
-              </div>
-              <div class="form-group">
               <div class="floating-form-group">
                 <p>Tipo de respuesta a la pregunta:</p>
                 <select class="floating-select" name="opciones" onclick="this.setAttribute('value', this.value);" value="">

@@ -37,26 +37,13 @@
           </div>
           </div>
           <div class="form-group">
-            <div class="floating-form-group">
-             <p>Añadir archivo a la pregunta:<input type="file" name="archivossubidos"></p>
-             <p>Añadir imagen a la pregunta:<input type="file" name="imagensubida" accept="image/png, .jpeg, .jpg, image/gif"></p>
-             <p>Añadir enlace a la pregunta:<input type="url" name="urlsubida" placeholder="http://website.com"></p>
-            </div>
-          </div> 
-          <div class="form-group">
           <div class="floating-form-group">
             <p>Tipo de respuesta a la pregunta:</p>
             <div class="form-group">
-              <input type="submit" name="opciones" onclick="this.setAttribute('value', this.value);" value="Varias opciones" class="floating-select">
+              <input type="checkbox" name="opciones" onclick="this.setAttribute('value', this.value);" value="Varias opciones" class="floating-select">
             </div>
             <div class="form-group">
-              <input type="submit" name="opciones" onclick="alert('Pregunta guardada con éxito');" value="Respuesta corta" class="floating-select">
-            </div>
-            <div class="form-group">
-              <input type="submit" name="opciones" onclick="alert('Pregunta guardada con éxito');" value="Código de programa" class="floating-select">
-            </div>
-            <div class="form-group">
-              <input type="submit" name="opciones" onclick="alert('Pregunta guardada con éxito');" value="Cargar archivos" class="floating-select">
+              <input type="checkbox" name="opciones" onclick="alert('Pregunta guardada con éxito');" value="Respuesta corta" class="floating-select">
             </div>
             <span class="highlight"></span>
           </div>

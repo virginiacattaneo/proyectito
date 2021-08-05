@@ -178,7 +178,6 @@ router.post('/nuevaseccion',(req, res) => {
       id: uuid(),
       nombre,
     };
-  
     //esta es para leer los datos que ya tengo en el archivo json
     const data = fs.readFileSync('src/secciones.json', 'utf-8');
     obj = JSON.parse(data); //now it an object
@@ -248,7 +247,7 @@ router.get('/borrarexamen/:id', (req, res) => {
 
 
 router.post('/nuevapregunta',(req, res) => {
-  const  { seccion, title ,  descripcion, opciones, archivossubidos, imagensubida, urlsubida}  =  req.body ;
+  const  { seccion, title ,  descripcion, opciones}  =  req.body ;
   var obj = {
     table: []
   };
@@ -259,9 +258,6 @@ router.post('/nuevapregunta',(req, res) => {
      title,  
      descripcion, 
      opciones,
-     archivossubidos,
-     imagensubida,
-     urlsubida,
      checkboxtitleopcion: [],
      titleopcion: ['Opción 1'],
    };
@@ -272,14 +268,11 @@ router.post('/nuevapregunta',(req, res) => {
       title,  
       descripcion, 
       opciones,
-      archivossubidos,
-      imagensubida,
-      urlsubida,
       checkboxtitleopcion: [],
       titleopcion: [],
     };
   }
-  //ver las otras formas de respuesta
+
   /*obj.table.push(newObj);
   var json = JSON.stringify(obj);
   fs.writeFileSync('src/datospreguntas.json', json, 'utf-8');*/
@@ -318,9 +311,6 @@ router.post('/otras_respuesta/:id',(req, res) => {
         title: req.body.title,
         descripcion: req.body.descripcion,
         opciones: 'Varias opciones', 
-        archivossubidos: req.body.archivossubidos, 
-        imagensubida: req.body.imagensubida,
-        urlsubida: req.body.urlsubida,
         checkboxtitleopcion: req.body.checkboxtitleopcion,
         titleopcion: req.body.titleopcion,
       };
@@ -332,9 +322,6 @@ router.post('/otras_respuesta/:id',(req, res) => {
         title: obj.table[j].title,
         descripcion: obj.table[j].descripcion,
         opciones: 'Varias opciones', 
-        archivossubidos: obj.table[j].archivossubidos, 
-        imagensubida: obj.table[j].imagensubida,
-        urlsubida: obj.table[j].urlsubida,
         checkboxtitleopcion: obj.table[j].checkboxtitleopcion,
         titleopcion: obj.table[j].titleopcion,
       };
@@ -350,7 +337,6 @@ router.post('/otras_respuesta/:id',(req, res) => {
   }else{// si decidio añadir
     res.render('preguntas', { dats: json_dats });
   };
-  
 });
 /*
 router.post('/nuevoexamen',(req, res) => {
