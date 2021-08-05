@@ -30,22 +30,7 @@
                 <div class="floating-form-group">
                   <label><%= (JSON.parse(dats)).examen[index].descripcion;%></label>
                 </div>
-              </div>
-      
-              <div class="form-group">
-                <div class="floating-form-group">
-                 <%if ((JSON.parse(dats)).examen[index].archivossubidos != ''){%>
-                 <p>Archivo a la pregunta:<input type="url" placeholder="<%= (JSON.parse(dats)).examen[index].archivossubidos;%>"></p>
-                 <%}%>
-                 <%if ((JSON.parse(dats)).examen[index].imagensubida != ''){%>
-                 <p>Imagen a la pregunta:<input type="url" placeholder="<%= (JSON.parse(dats)).examen[index].imagensubida;%>"></p>
-                 <%}%>
-                 <%if ((JSON.parse(dats)).examen[index].urlsubida != ''){%>
-                 <p>Enlace a la pregunta:<input type="url" placeholder="<%= (JSON.parse(dats)).examen[index].urlsubida;%>"></p>
-                 <%}%>
-                </div>
-              </div>
-             
+              </div>             
               <div class="form-group">
               <% if ((JSON.parse(dats)).examen[index].opciones == 'Varias opciones'){%>
                     <%long1=(JSON.parse(dats)).examen[index].titleopcion.length;%> 
@@ -62,23 +47,6 @@
                           </div>
                         </div>  
                     <%}
-                if ((JSON.parse(dats)).examen[index].opciones == 'Código de programa'){%>
-                          <div class="form-group">
-                          <div class="floating-form-group">
-                          <p><code>
-                          <textarea class="floating-form-control floating-textarea" name="codigodeprograma">push()</textarea>
-                          <span class="highlight"></span>
-                          </code></p>
-                          </div>
-                          </div>
-                  <%}
-                  if ((JSON.parse(dats)).examen[index].opciones == 'Cargar archivos'){%>
-                        <div class="form-group">
-                        <div class="floating-form-group">
-                        <p>Sube un archivo:<input type="file" name="archivossubidos[]" multiple></p>
-                        </div>
-                        </div>
-                    <%}%>
                </div>   
         <%}%>    
          

@@ -11,6 +11,10 @@ router.get('/', (req, res) => {
   res.render('index', { dats:'Examenes Online 2021'});
 });
 
+router.get('/#about', (req, res) => {
+  res.render('about', { dats:'Examenes Online 2021'});
+});
+
 router.get('/listadoexamen', (req, res) => {
   const data = fs.readFileSync('src/listaexamen.json', 'utf-8');
   var json = JSON.stringify(JSON.parse(data)); //convert it back to json
@@ -54,9 +58,6 @@ router.post('/generarexamenfinal', (req, res) => {
           puntaje: req.body.puntaje[i],
           descripcion: obje.examen[i].descripcion,
           opciones: obje.examen[i].opciones,
-          archivossubidos: obje.examen[i].archivossubidos,
-          imagensubida: obje.examen[i].imagensubida,
-          urlsubida: obje.examen[i].urlsubida,
           checkboxtitleopcion: obje.examen[i].checkboxtitleopcion,
           titleopcion: obje.examen[i].titleopcion,
       }
@@ -108,9 +109,6 @@ router.post('/generarexamen', (req, res) => {
         title: obj.table[j].title,
         descripcion: obj.table[j].descripcion,
         opciones: obj.table[j].opciones,
-        archivossubidos: obj.table[j].archivossubidos,
-        imagensubida: obj.table[j].imagensubida,
-        urlsubida: obj.table[j].urlsubida,
         checkboxtitleopcion: obj.table[j].checkboxtitleopcion,
         titleopcion: obj.table[j].titleopcion,
       };
