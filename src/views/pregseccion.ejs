@@ -16,8 +16,8 @@
               <h2>Listado de preguntas por secciones hhh</h2>
               <table class="pregseccion">
                 <tr>
-                  <th class="th"><p>Seccion probando si si siiiiiiactualiza</p></th>
-                  <th class="th"><p>Preguntas</p></th> 
+                  <th class="td"><p>Seccion</p></th>
+                  <th class="td"><p>Preguntas</p></th> 
                 </tr>
                 
               </table>
@@ -25,7 +25,9 @@
               <%for (index=0; index<long; index++){%>
               <tr>
                 <td class="td"><p> <%= (JSON.parse(dats)).table[index].seccion;%></p></td>
-              
+                <td class="td"><p> <%= (JSON.parse(dats)).table[index].title;%></p></td>
+                
+               
               </tr>
               <%}%>
             </div>
