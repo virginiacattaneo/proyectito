@@ -11,6 +11,14 @@ router.get('/', (req, res) => {
   res.render('index', { dats:'Examenes Online 2021'});
 });
 
+router.get('/#about', (req, res) => {
+  res.render('about', { dats:'Examenes Online 2021'});
+});
+
+router.get('/aceptarmensaje', (req, res) => {
+  res.render('index', { dats:'Examenes Online 2021'});
+});
+
 router.get('/listadoexamen', (req, res) => {
   const data = fs.readFileSync('src/listaexamen.json', 'utf-8');
   var json = JSON.stringify(JSON.parse(data)); //convert it back to json
@@ -57,9 +65,6 @@ router.post('/generarexamenfinal', (req, res) => {
           puntaje: req.body.puntaje[i],
           descripcion: obje.examen[i].descripcion,
           opciones: obje.examen[i].opciones,
-          archivossubidos: obje.examen[i].archivossubidos,
-          imagensubida: obje.examen[i].imagensubida,
-          urlsubida: obje.examen[i].urlsubida,
           checkboxtitleopcion: obje.examen[i].checkboxtitleopcion,
           titleopcion: obje.examen[i].titleopcion,
       }
@@ -111,9 +116,6 @@ router.post('/generarexamen', (req, res) => {
         title: obj.table[j].title,
         descripcion: obj.table[j].descripcion,
         opciones: obj.table[j].opciones,
-        archivossubidos: obj.table[j].archivossubidos,
-        imagensubida: obj.table[j].imagensubida,
-        urlsubida: obj.table[j].urlsubida,
         checkboxtitleopcion: obj.table[j].checkboxtitleopcion,
         titleopcion: obj.table[j].titleopcion,
       };
@@ -135,6 +137,7 @@ router.post('/generarexamen', (req, res) => {
     for (i=0; i<max; i++){
       randomIndex = Math.floor(Math.random() * (longseccpreg - min)) + min;// Retorna un entero aleatorio entre min (incluido) y max (excluido)// ¡Usando Math.round() te dará una distribución no-uniforme!
       console.log(randomIndex);
+      console.log(newobj.seccionespreguntas[randomIndex]);
       if (newobj.seccionespreguntas[randomIndex] != null){
         obje.examen.push(newobj.seccionespreguntas[randomIndex]);
         newobj.seccionespreguntas.splice(randomIndex, 1);//borra la pregunta en la posición randomIndex del arreglo de preguntas//asi controla que no se repita el número aleatorio
@@ -149,11 +152,18 @@ router.post('/generarexamen', (req, res) => {
         newobj.seccionespreguntas.splice(randomIndex, 1);//borra la pregunta en la posición randomIndex del arreglo de preguntas//asi controla que no se repita el número aleatorio
       }
     }
+  }
+  
+  if (longseccpreg>=max){
+    //guardar el examen con las preguntas aleatorias 
+    var jsonex = JSON.stringify(obje); //convert it back to json
+    fs.writeFileSync('src/examen.json', jsonex, 'utf-8'); // write it back    
+    res.render('mostrarexamfinal', { dats: jsonex });
+  }else{
+    res.render('mensaje', { dats: '¡No existe la cantidad de preguntas seleccionadas para la sección elegida!' });
   } 
-  //guardar el examen con las preguntas aleatorias 
-  var jsonex = JSON.stringify(obje); //convert it back to json
-  fs.writeFileSync('src/examen.json', jsonex, 'utf-8'); // write it back    
-  res.render('mostrarexamfinal', { dats: jsonex });
+
+  
 });
 
 router.get('/creaexamen', (req, res) => {
@@ -181,7 +191,6 @@ router.post('/nuevaseccion',(req, res) => {
       id: uuid(),
       nombre,
     };
-  
     //esta es para leer los datos que ya tengo en el archivo json
     const data = fs.readFileSync('src/secciones.json', 'utf-8');
     obj = JSON.parse(data); //now it an object
@@ -251,7 +260,7 @@ router.get('/borrarexamen/:id', (req, res) => {
 
 
 router.post('/nuevapregunta',(req, res) => {
-  const  { seccion, title ,  descripcion, opciones, archivossubidos, imagensubida, urlsubida}  =  req.body ;
+  const  { seccion, title ,  descripcion, opciones}  =  req.body ;
   var obj = {
     table: []
   };
@@ -262,9 +271,6 @@ router.post('/nuevapregunta',(req, res) => {
      title,  
      descripcion, 
      opciones,
-     archivossubidos,
-     imagensubida,
-     urlsubida,
      checkboxtitleopcion: [],
      titleopcion: ['Opción 1'],
    };
@@ -275,14 +281,11 @@ router.post('/nuevapregunta',(req, res) => {
       title,  
       descripcion, 
       opciones,
-      archivossubidos,
-      imagensubida,
-      urlsubida,
       checkboxtitleopcion: [],
       titleopcion: [],
     };
   }
-  //ver las otras formas de respuesta
+
   /*obj.table.push(newObj);
   var json = JSON.stringify(obj);
   fs.writeFileSync('src/datospreguntas.json', json, 'utf-8');*/
@@ -321,9 +324,6 @@ router.post('/otras_respuesta/:id',(req, res) => {
         title: req.body.title,
         descripcion: req.body.descripcion,
         opciones: 'Varias opciones', 
-        archivossubidos: req.body.archivossubidos, 
-        imagensubida: req.body.imagensubida,
-        urlsubida: req.body.urlsubida,
         checkboxtitleopcion: req.body.checkboxtitleopcion,
         titleopcion: req.body.titleopcion,
       };
@@ -335,9 +335,6 @@ router.post('/otras_respuesta/:id',(req, res) => {
         title: obj.table[j].title,
         descripcion: obj.table[j].descripcion,
         opciones: 'Varias opciones', 
-        archivossubidos: obj.table[j].archivossubidos, 
-        imagensubida: obj.table[j].imagensubida,
-        urlsubida: obj.table[j].urlsubida,
         checkboxtitleopcion: obj.table[j].checkboxtitleopcion,
         titleopcion: obj.table[j].titleopcion,
       };
@@ -353,7 +350,6 @@ router.post('/otras_respuesta/:id',(req, res) => {
   }else{// si decidio añadir
     res.render('preguntas', { dats: json_dats });
   };
-  
 });
 /*
 router.post('/nuevoexamen',(req, res) => {
