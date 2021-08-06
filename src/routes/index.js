@@ -177,18 +177,13 @@ router.post('/generarexamen', (req, res) => {
         newobj.seccionespreguntas.splice(randomIndex, 1);//borra la pregunta en la posición randomIndex del arreglo de preguntas//asi controla que no se repita el número aleatorio
       }
     }
-  }
-  
-  if (longseccpreg>=max){
     //guardar el examen con las preguntas aleatorias 
     var jsonex = JSON.stringify(obje); //convert it back to json
     fs.writeFileSync('src/examen.json', jsonex, 'utf-8'); // write it back    
     res.render('mostrarexamfinal', { dats: jsonex });
   }else{
-    res.render('mensaje', { dats: '¡No existe la cantidad de preguntas seleccionadas para la sección elegida!' });
-  } 
-
-  
+    res.render('mensaje', { dats: '¡No existe la cantidad de preguntas seleccionadas para la sección elegida!' });  
+  }
 });
 
 router.get('/creaexamen', (req, res) => {

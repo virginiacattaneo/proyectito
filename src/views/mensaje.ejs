@@ -6,8 +6,17 @@
     <% include partials/head %>
   </head>
   <body>
-    <h3><%=dats%>></h3>
-    <div class="form-group">
-        <a class="nav-link" href="/aceptarmensaje">Aceptar</a>
-    </div>
+    <% include partials/navigation %>
+    <div class="container p-5">
+      <div class="floating-component">
+        <div class="pregunta">
+          <h3><%=dats%></h3>
+          <li class="nav-item">
+            <a class="nav-link" href="/aceptarmensaje"><p style="color:#000";>Aceptar</p></a>
+          </li>
+        </div>
+      </div>
+    </div>    
+       
+    <% include partials/footer %> 
   </body>
