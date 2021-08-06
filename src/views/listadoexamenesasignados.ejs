@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Listado Examenes</title>
+    <% include partials/head %>
+  </head>
+  <body>
+    <% include partials/navigation %>
+    <script>
+    function file(event){
+      let file  = document.getElementById('file');
+      document.getElementById('filename').innerHTML = `nombre original: ${file.files[0].name}`;
+      //let extension = "html";
+      let nuevo_nombre = `archivo_nuevo.html`;
+      file.files[0].name = nuevo_nombre;
+      
+      document.getElementById('filenameNuevo').innerHTML = `nombre creado desde javascript: ${nuevo_nombre} `;
+      
+      document.getElementById('filenameSubido').innerHTML = `el nombre se conserva: ${file.files[0].name}`;
+    }
+    </script>
+    <div class="container p-5">
+      <div class="row">
+        <div >
+          <div >
+            <div >
+              <h2>Listado de examenes generados para asignar</h2>
+              
+                <%longA=(JSON.parse(datsA)).alumnos.length;%>  
+                <%long=(JSON.parse(dats)).examenes.length;%>  
+               
+                <%for (index=0; index<long; index++){%>
+                                
+                  <% var hayalumno=(JSON.parse(dats)).examenes[index].alumnoasignado;
+                  if(hayalumno == ""){
+                    console.log("entro al if el alumno es vacio");
+                    %>
+                    <table class="tableexamenes">
+                      <tr>
+                        <th class="th"><p>Fecha</p></th>
+                        <th class="th"><p>Examen</p></th>
+                        <th class="th"><p>Acci&oacute;n</p></th>
+                        <th class="th"><p>Asignar a:</p></th>
+                      </tr>
+                <tr>
+                  <td class="td"><p> <%= (JSON.parse(dats)).examenes[index].fecha;%></p></td>
+                  <td class="td"><p><%= (JSON.parse(dats)).examenes[index].id;%></p></td>
+                  <td class="td"><p><form action="/borrarexamen/<%=(JSON.parse(dats)).examenes[index].id%>" method="get"><button class="btn btn-primary btn-block">Borrar</button></form><p></td>
+                  <td class="td"><p>
+                    <form action="/asignaralumno" method="POST">
+                    <select class="floating-select" name="alumnoasignado" onclick="this.setAttribute('value', this.value);" value="" required>
+                    <option value="">Elegir estudiante</option>
+                    <%for (index1=0; index1<longA; index1++){%>
+                      <option value="<%= (JSON.parse(datsA)).alumnos[index1].DNI;%>"><%= (JSON.parse(datsA)).alumnos[index1].nombrecompleto;%></option>
+                      
+                    <% }%>
+                    <input type="hidden" name=idexamen value=<%= (JSON.parse(dats)).examenes[index].id;%>> 
+                  </select>
+                  <input type="submit" name="asignarAlumno" value="Asignar" class="btn btn-primary btn-block">
+
+                  <a href='' id='enlace_aleatorio' type="hidden" >Enlace al examen</a>
+                  <script type="text/javascript"> // Lista de URLs separados por coma y entre comillas 
+                  var urls= [ '/Examenes/', '/examenes1/', '/Examenes2/' ]; 
+                  // Escoger una al azar 
+                  var url = urls[Math.floor(Math.random()*urls.length)]; 
+                  // Asignarlo al boton 
+                  document.getElementById('enlace_aleatorio').href = url;
+                   </script>
+                  </form>
+                  </p></td>
+                  </tr>
+               </table>
+              <% 
+                }
+                                %>
+                
+                <% 
+              }%> 
+               
+             
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% include partials/footer %>
+  </body>
+</html>

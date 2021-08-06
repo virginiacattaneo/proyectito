@@ -21,37 +21,27 @@
     }
     </script>
     <div class="container p-5">
-      <div class="row">
+      <div >
         <div >
           <div >
             <div >
-              <h2>Listado de examenes generados</h2>
+              <h2>Listado de examenes Asignados</h2>
               <table class="tableexamenes">
                 <tr>
                   <th class="th"><p>Fecha</p></th>
                   <th class="th"><p>Examen</p></th>
+                  <th class="th"><p>Estudiante asignado</p></th>
                   <th class="th"><p>URL</p></th>
-                  <th class="th"><p>Acci&oacute;n</p></th>
-                  <th class="th"><p>Asignar examen</p></th>
                   <th class="th"><p>Enviar examen</p></th>
                 </tr>
-                <%longA=(JSON.parse(datsA)).alumnos.length;%>  
                 <%long=(JSON.parse(dats)).examenes.length;%>  
-                <%for (index=0; index<long; index++){%>
+                <%for (index=0; index<long; index++){
+                  %>
                 <tr>
                   <td class="td"><p> <%= (JSON.parse(dats)).examenes[index].fecha;%></p></td>
                   <td class="td"><p><%= (JSON.parse(dats)).examenes[index].id;%></p></td>
+                  <td class="td"><p><%= (JSON.parse(dats)).examenes[index].alumnoasignado;%></p></td>
                   <td class="td"><p><%= (JSON.parse(dats)).examenes[index].URL;%></p></td>
-                  <td class="td"><p><form action="/asignaralumno/<%=(JSON.parse(dats)).examenes[index].id%>" method="get"><button class="btn btn-primary btn-block">Borrar</button></form><p></td>
-                  <td class="td"><p>
-                    <select class="floating-select" name="seccion" onclick="this.setAttribute('value', this.value);" value="" required>
-                    <option value="">Elegir estudiante</option>
-                    <%for (index1=0; index1<longA; index1++){%>
-                      <option value="<%= (JSON.parse(datsA)).alumnos[index1].DNI;%>"><%= (JSON.parse(datsA)).alumnos[index1].nombrecompleto;%></option>
-                    
-                    <% }%> 
-                  </select>
-                  </p></td>
                   <td class="td"><p><form action="../files" method="post" enctype="multipart/form-data"><input type="file" name="examen" onchange="file(event)"><input type="submit" value="Enviar"></form></p></td>
                 </tr>
               
