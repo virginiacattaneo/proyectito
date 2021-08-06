@@ -351,15 +351,27 @@ router.post('/otras_respuesta/:id',(req, res) => {
   long=obj.table.length;
   for (j=0; j<long; j++){
     if(obj.table[j].id == req.params.id){
-      elObj = {
-        id: req.params.id,
-        seccion: req.body.seccion,
-        title: req.body.title,
-        descripcion: req.body.descripcion,
-        opciones: 'Varias opciones', 
-        checkboxtitleopcion: req.body.checkboxtitleopcion,
-        titleopcion: req.body.titleopcion,
-      };
+      if (req.body.checkboxtitleopcion==''){
+        elObj = {
+          id: req.params.id,
+          seccion: req.body.seccion,
+          title: req.body.title,
+          descripcion: req.body.descripcion,
+          opciones: 'Varias opciones', 
+          checkboxtitleopcion: [],
+          titleopcion: req.body.titleopcion,
+        };
+      }else{
+        elObj = {
+          id: req.params.id,
+          seccion: req.body.seccion,
+          title: req.body.title,
+          descripcion: req.body.descripcion,
+          opciones: 'Varias opciones', 
+          checkboxtitleopcion: req.body.checkboxtitleopcion,
+          titleopcion: req.body.titleopcion,
+        };
+      }
       newobj.table.push(elObj);
     }else{
       elObj = {
