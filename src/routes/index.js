@@ -74,7 +74,7 @@ router.post('/generarexamenfinal', (req, res) => {
     examenes : []
   };
   var elObjexamen = {
-    id: uuid(), fecha: new Date(), examenes: [],
+    id: uuid(), fecha: new Date(),alumnoasignado:"", examenes: [],
   };
   const dato = fs.readFileSync('src/examen.json', 'utf-8');
   obje = JSON.parse(dato); //now it an object
