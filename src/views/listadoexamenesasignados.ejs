@@ -45,30 +45,13 @@
                     <input type="hidden" name=idexamen value=<%= (JSON.parse(dats)).examenes[index].id;%>> 
                   </select>
                   <input type="submit" name="asignarAlumno" value="Asignar" class="btn btn-primary btn-block">
-
-                  <a href='' id='enlace_aleatorio' type="hidden" >Enlace al examen</a>
-                  <script type="text/javascript"> // Lista de URLs separados por coma y entre comillas 
-                  var urls= [ '/Examenes/', '/examenes1/', '/Examenes2/' ]; 
-                  // Escoger una al azar 
-                  var url = urls[Math.floor(Math.random()*urls.length)]; 
-                  // Asignarlo al boton 
-                  document.getElementById('enlace_aleatorio').href = url;
-                   </script>
                   </form>
                   </p></td>
                   </tr>
                </table>
               <% 
                 }
-                                %>
-                
-                <% 
               }%> 
-               
-             
-
-
-
             </div>
           </div>
         </div>
