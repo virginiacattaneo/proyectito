@@ -19,6 +19,43 @@ router.get('/aceptarmensaje', (req, res) => {
   res.render('index', { dats:'Examenes Online 2021'});
 });
 
+//EXAMENES
+router.get('/asignarexamen', (req, res) => {
+  const data = fs.readFileSync('src/listaexamen.json', 'utf-8');
+  var json = JSON.stringify(JSON.parse(data)); //convert it back to json
+  const dataA = fs.readFileSync('src/alumnos.json', 'utf-8');
+  var jsonA = JSON.stringify(JSON.parse(dataA)); //convert it back to json
+  res.render('listadoexamenesasignados', { dats: json , datsA:jsonA});
+})
+
+router.post('/asignaralumno', (req, res) => {
+   const  { alumnoasignado }  =  req.body;
+   const {idexamen}=req.body;
+    var obj = {
+    examenes: []
+  };
+  
+  //esta es para leer los datos que ya tengo en el archivo json
+  const data = fs.readFileSync('src/listaexamen.json', 'utf-8');
+  obj = JSON.parse(data); //now it an object
+  long=obj.examenes.length;
+
+  for (j=0; j<long; j++){
+    if(obj.examenes[j].id == idexamen){
+        obj.examenes[j].alumnoasignado =alumnoasignado;
+    }
+  }
+  var json = JSON.stringify(obj); //convert it back to json
+  fs.writeFileSync('src/listaexamen.json', json, 'utf-8'); // write it back
+  
+
+  const dataA = fs.readFileSync('src/alumnos.json', 'utf-8');
+  var jsonA = JSON.stringify(JSON.parse(dataA)); //convert it back to json
+  res.render('listadoexamen', { dats: json , datsA:jsonA});
+  
+})
+
+
 router.get('/listadoexamen', (req, res) => {
   const data = fs.readFileSync('src/listaexamen.json', 'utf-8');
   var json = JSON.stringify(JSON.parse(data)); //convert it back to json
@@ -26,18 +63,6 @@ router.get('/listadoexamen', (req, res) => {
   var jsonA = JSON.stringify(JSON.parse(dataA)); //convert it back to json
   res.render('listadoexamen', { dats: json , datsA:jsonA});
 })
-
-
-router.get('/pregseccion', (req, res) => {
-  const data = fs.readFileSync('src/datospreguntas.json', 'utf-8');
-  var json = JSON.stringify(JSON.parse(data)); //convert it back to json
-  const dataS = fs.readFileSync('src/secciones.json', 'utf-8');
-  var jsonS = JSON.stringify(JSON.parse(dataS)); //convert it back to json
-  res.render('pregseccion', { dats: json, dataS: jsonS});
-  
-})
- 
- 
 
 
 router.post('/generarexamenfinal', (req, res) => {
@@ -178,6 +203,7 @@ router.get('/preguntas',(req, res) => {
   res.render('preguntasinicio', { dats: json });
 });
 
+//SECCIONES 
 router.get('/creaseccion',(req, res) => {
   res.render('creaseccion',  { dats:'Generar seccion' });
 });
@@ -226,6 +252,18 @@ router.get('/borrar/:id', (req, res) => {
       fs.writeFileSync('src/secciones.json', json_dats, 'utf-8');
       res.render('listadosecciones', { dats: json_dats });
 });
+
+//SECCIONES 
+router.get('/pregseccion', (req, res) => {
+  const data = fs.readFileSync('src/datospreguntas.json', 'utf-8');
+  var json = JSON.stringify(JSON.parse(data)); //convert it back to json
+  const dataS = fs.readFileSync('src/secciones.json', 'utf-8');
+  var jsonS = JSON.stringify(JSON.parse(dataS)); //convert it back to json
+  res.render('pregseccion', { dats: json, dataS: jsonS});
+  
+})
+ 
+ 
 
 router.get('/borrarexamen/:id', (req, res) => {
   console.log(req.params.id);
