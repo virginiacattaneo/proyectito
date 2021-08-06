@@ -29,9 +29,7 @@ router.get('/pregseccion', (req, res) => {
   
 })
  
-  res.render('listadosecciones', { dats: json});
-  
-})
+ 
 
 
 router.post('/generarexamenfinal', (req, res) => {
