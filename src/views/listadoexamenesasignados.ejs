@@ -7,19 +7,6 @@
   </head>
   <body>
     <% include partials/navigation %>
-    <script>
-    function file(event){
-      let file  = document.getElementById('file');
-      document.getElementById('filename').innerHTML = `nombre original: ${file.files[0].name}`;
-      //let extension = "html";
-      let nuevo_nombre = `archivo_nuevo.html`;
-      file.files[0].name = nuevo_nombre;
-      
-      document.getElementById('filenameNuevo').innerHTML = `nombre creado desde javascript: ${nuevo_nombre} `;
-      
-      document.getElementById('filenameSubido').innerHTML = `el nombre se conserva: ${file.files[0].name}`;
-    }
-    </script>
     <div class="container p-5">
       <div class="row">
         <div >
