@@ -5,13 +5,13 @@ body {
 }
 
 .navbar-brand {
-  font-family: 'Spicy Rice', cursive;
+  font-family:monospace, cursive;
   font-size: 1.5rem;
 }
 
 .nav-link {
   text-transform: uppercase;
-  font-family: 'Spicy Rice', cursive;
+  font-family:sans-serif, cursive;
 }
 
 header img {
@@ -27,11 +27,11 @@ header img {
   font-size: 2rem;
 }
 .navega {
-  font-family: 'Spicy Rice', cursive;
+  font-family:Verdana, Geneva, Tahoma, sans-serif, cursive;
   font-size: 1.25rem;
 }
 .pregunta{
-  font-family: 'Spicy Rice', cursive;
+  font-family:Verdana, Geneva, Tahoma, sans-serif, cursive;
   font-size: 1rem;
 }
 .floating-form-group {
@@ -91,4 +91,10 @@ th, td {
   padding: 0.3em;
   caption-side: bottom;
   background: #fff;
+}
+preguntasecciones {
+  background-color: #348AC7;
+  color: #cccccc;
+  font-size: medium;
+  text-align: center;
 }

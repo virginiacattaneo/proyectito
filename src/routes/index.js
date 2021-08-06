@@ -23,11 +23,16 @@ router.get('/listadoexamen', (req, res) => {
 router.get('/pregseccion', (req, res) => {
   const data = fs.readFileSync('src/datospreguntas.json', 'utf-8');
   var json = JSON.stringify(JSON.parse(data)); //convert it back to json
-  //const dataA = fs.readFileSync('src/alumnos.json', 'utf-8');
-  //var jsonA = JSON.stringify(JSON.parse(dataA)); //convert it back to json
-  res.render('pregseccion', { dats: json});
+  const dataS = fs.readFileSync('src/secciones.json', 'utf-8');
+  var jsonS = JSON.stringify(JSON.parse(dataS)); //convert it back to json
+  res.render('pregseccion', { dats: json, dataS: jsonS});
   
 })
+ 
+  res.render('listadosecciones', { dats: json});
+  
+})
+
 
 router.post('/generarexamenfinal', (req, res) => {
   var obje = {

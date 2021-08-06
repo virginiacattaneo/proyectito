@@ -7,34 +7,38 @@
   </head>
   <body>
     <% include partials/navigation %>
-    
+    <script>
+      function seleccionada(){
+        var seleccionada= document.getElementById("seccion").selectedIndex;
+        if(seleccionada==0)
+        document.getElementById("text1").value="";
+        else
+        document.getElementById("text1").value=document.getElementById("seccion").options[seleccionada].value;
+        console.log(seleccionada);
+      }
+      </script>
     <div class="container p-5">
       <div class="row">
-        <div >
-          <div >
-            <div >
-              <h2>Listado de preguntas por secciones hhh</h2>
-              <table class="pregseccion">
-                <tr>
-                  <th class="td"><p>Seccion</p></th>
-                  <th class="td"><p>Preguntas</p></th> 
-                </tr>
-                
-              </table>
-              <%long=(JSON.parse(dats)).table.length;%>  
+              <form name="formlistado" action="">  
+              
+            <h2>Selecciones la seccion para la cual desea ver las preguntas</h2>
+            <select class="floating-select" name="seccion" ide="seccion" onchange="seleccionada();" required>
+              <option value="">Elegir Sección</option>
+              <%long=(JSON.parse(dataS)).secciones.length;%>  
               <%for (index=0; index<long; index++){%>
-              <tr>
-                <td class="td"><p> <%= (JSON.parse(dats)).table[index].seccion;%></p></td>
-                <td class="td"><p> <%= (JSON.parse(dats)).table[index].title;%></p></td>
-                
-               
-              </tr>
+                <option value="<%= (JSON.parse(dataS)).secciones[index].nombre;%>"><%= (JSON.parse(dataS)).secciones[index].nombre;%></option>
               <%}%>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <% include partials/footer %>
+             
+          </select>
+          <h2>Listado de Preguntas por sección:</h2>
+              <input type="text" value="" id="text1" name="text1"/>
+            <br>
+            <br>
+            
+        </form>
+      </div>>
+      </div>>       
+
   </body>
-</html>
+
+  </html>
