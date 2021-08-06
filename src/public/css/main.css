@@ -92,14 +92,12 @@ th, td {
   caption-side: bottom;
   background: #fff;
 }
-<<<<<<< HEAD
 preguntasecciones {
   background-color: #348AC7;
   color: #cccccc;
   font-size: medium;
   text-align: center;
 }
-=======
 div.contenedor {
   width: 100%; 
 }
@@ -110,4 +108,3 @@ button.centrado {
   background-color: #008CBA
 }
 
->>>>>>> dcc9b083a550e2db789085911b2f4cedeaf94af0
