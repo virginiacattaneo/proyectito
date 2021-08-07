@@ -8,7 +8,15 @@ const {uuid} = require('uuidv4');
 const { Console } = require('console');
 
 router.get('/', (req, res) => {
+  res.render('usuario', { dats:'Examenes Online 2021'});
+});
+
+router.get('/index', (req, res) => {
   res.render('index', { dats:'Examenes Online 2021'});
+});
+
+router.get('/alumno', (req, res) => {
+  res.render('usuarioalumno', { dats:'Examenes Online 2021'});
 });
 
 router.get('/#about', (req, res) => {
@@ -18,6 +26,45 @@ router.get('/#about', (req, res) => {
 router.get('/aceptarmensaje', (req, res) => {
   res.render('index', { dats:'Examenes Online 2021'});
 });
+
+router.get('/usuario', (req, res) => {
+  res.render('usuario', { dats:'Examenes Online 2021'});
+});
+
+
+router.post('/usuarioasigexamen', (req, res) => {
+   var obj = {
+   examenes: []
+ };
+ 
+ //esta es para leer los datos que ya tengo en el archivo json
+ const data = fs.readFileSync('src/listaexamen.json', 'utf-8');
+ obj = JSON.parse(data); //now it an object
+ long=obj.examenes.length;
+ var objex = {
+  examenes: []
+ };
+ cont=0;
+ for (j=0; j<long; j++){
+   if(obj.examenes[j].id == req.body.examencod){
+    objex = {
+      id: obj.examenes[j].id,
+      alumnoasignado: obj.examenes[j].alumnoasignado,
+      examenes: obj.examenes[j].examenes,
+    }
+    cont=cont+1;
+   }
+ }
+ if(cont>=1){
+    var json = JSON.stringify(objex); //convert it back to json
+    fs.writeFileSync('src/examenalumno.json', json, 'utf-8'); // write it back
+    res.render('examen', { dats: json});
+ }else{
+    res.render('usuarioalumno', { dats: 'codigo mal ingresado'}); 
+ }
+ 
+});
+
 
 //EXAMENES
 router.get('/asignarexamen', (req, res) => {
