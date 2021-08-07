@@ -6,16 +6,29 @@
   </head>
   <body>
     <% include partials/navigation %>
+    <script>
+      
+        var titulo=document.getElementById("titulo").value;
+        function validar(){
+         if(titulo==""){
+          alert("ingrese el titulo");
+          return false;
+        }
+      
+      }
+        </script>
     <div class="fullscreen">
       <div class="container p-5">
       <div class="floating-component">
       <div class="pregunta">
-      <div class="card card-body text-center"><h3>Preguntas</h3></div>  
-          <form method="POST" action="/nuevapregunta" class="card card-body">
+      <div class="card card-body text-center"><h3>Generar Preguntas</h3></div>  
+      <div class="card card-body text-center"><p>Seleccione la seccion en la cual va a ingresar su pregunta</p> </div>
+          <form method="POST" action="/nuevapregunta" class="card card-body" onclick="return validar();">
           <div class="form-group">
           <div class="floating-form-group">
             <select class="floating-select" name="seccion" onclick="this.setAttribute('value', this.value);" value="" required>
-                <option value="">Elegir Sección</option>
+             
+              <option value="">Seleccionar Sección</option>
                 <%long=(JSON.parse(dats)).secciones.length;%>  
                 <%for (index=0; index<long; index++){%>
                   <option value="<%= (JSON.parse(dats)).secciones[index].nombre;%>"><%= (JSON.parse(dats)).secciones[index].nombre;%></option>
@@ -25,14 +38,14 @@
           </div>
           </div>
           <div class="form-group">
-          <div class="floating-form-group">
-              <input class="floating-form-control" name="title" type="text" value="Pregunta sin título" autofocus required>
+          <div class="floating-form-group"><p> Titulo</p>
+              <input class="floating-form-control" name="title" id="titulo" type="text" value="Pregunta sin título" >
               <span class="highlight"></span>
           </div>
           </div>
-          <div class="form-group">
+          <div class="form-group"><p> Breve descripcion de la pregunta</p>
           <div class="floating-form-group">
-            <textarea class="floating-form-control floating-textarea" name="descripcion">Descripción de la pregunta</textarea>
+            <textarea class="floating-form-control floating-textarea" name="descripcion" id="descripcion">Descripción de la pregunta</textarea>
             <span class="highlight"></span>
           </div>
           </div>
@@ -40,16 +53,18 @@
           <div class="floating-form-group">
             <p>Elige el tipo de respuesta a la pregunta:</p>
             <div class="contenedor">
-              <button name="opciones" onclick="this.setAttribute('value', this.value);" value="Varias opciones" class="centrado">Varias opciones</button>
+              <button name="opciones" onclick="this.setAttribute('value', this.value);" value="Varias opciones" class="centrado" >Varias opciones</button>
             </div>  
             <br>
             <div class="contenedor">
-              <button name="opciones" onclick="alert('Pregunta con respuesta corta ¡guardada con éxito!');" value="Respuesta corta" class="centrado">Respuesta corta</button>
-            </div>                        
+              <button name="opciones"  value="Respuesta corta" class="centrado">Respuesta corta</button>
+            
+              </div>                        
             <span class="highlight"></span>
           </div>
           </div>
           </form>
+         
   </div></div></div></div>
   </body>
 </html>
