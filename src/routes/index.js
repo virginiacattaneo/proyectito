@@ -111,12 +111,7 @@ router.get('/listadoexamen', (req, res) => {
   res.render('listadoexamen', { dats: json , datsA:jsonA});
 })
 
-router.get('/pregseccion', (req, res) => {
-  const dataS = fs.readFileSync('src/datospreguntas.json', 'utf-8');
-  var json = JSON.stringify(JSON.parse(dataS)); //convert it back to json
-  
-  res.render('pregseccion', { dats: json });
-})
+
 
 
 router.post('/generarexamenfinal', (req, res) => {
@@ -301,6 +296,9 @@ router.get('/borrar/:id', (req, res) => {
       fs.writeFileSync('src/secciones.json', json_dats, 'utf-8');
       res.render('listadosecciones', { dats: json_dats });
 });
+
+
+
 
 //SECCIONES 
 router.get('/pregseccion', (req, res) => {
