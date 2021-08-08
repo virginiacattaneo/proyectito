@@ -111,6 +111,7 @@ router.get('/listadoexamen', (req, res) => {
   res.render('listadoexamen', { dats: json , datsA:jsonA});
 })
 
+router.get('/pregseccion', (req, res) => {
 
 router.post('/generarexamenfinal', (req, res) => {
   var obje = {
