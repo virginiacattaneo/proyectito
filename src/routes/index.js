@@ -112,6 +112,7 @@ router.get('/listadoexamen', (req, res) => {
 })
 
 router.get('/pregseccion', (req, res) => {
+  const dataS = fs.readFileSync('src/datospreguntas.json', 'utf-8');
 
 router.post('/generarexamenfinal', (req, res) => {
   var obje = {
