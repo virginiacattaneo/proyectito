@@ -19,7 +19,7 @@ router.get('/alumno', (req, res) => {
   res.render('usuarioalumno', { dats:'Examenes Online 2021'});
 });
 
-router.get('/#about', (req, res) => {
+router.get('/about', (req, res) => {
   res.render('about', { dats:'Examenes Online 2021'});
 });
 
