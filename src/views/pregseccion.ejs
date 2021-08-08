@@ -7,37 +7,37 @@
   </head>
   <body>
     <% include partials/navigation %>
-    <script>
-      function seleccionada(){
-        var seleccionada= document.getElementById("seccion").selectedIndex;
-        if(seleccionada==0)
-        document.getElementById("text1").value="";
-        else
-        document.getElementById("text1").value=document.getElementById("seccion").options[seleccionada].value;
-        console.log(seleccionada);
-      }
-      </script>
+    
     <div class="container p-5">
       <div class="row">
-              <form name="formlistado" action="">  
-              
-            <h2>Selecciones la seccion para la cual desea ver las preguntas</h2>
-            <select class="floating-select" name="seccion" ide="seccion" onchange="seleccionada();" required>
-              <option value="">Elegir Sección</option>
-              <%long=(JSON.parse(dataS)).secciones.length;%>  
+        <div >
+          <div >
+            <div >
+              <h2>Listado de Preguntas por secciones</h2>
+            <br>
+            <br>
+              <table class="preguntasecciones">
+                <tr>
+                  <th class="th"><p>Secciones</p></th>
+                  <th class="th"><p>Preguntas</p></th>
+                  <th class="th"><p>Descripcion</p></th>
+                  <th class="th"><p>Tipo de Respuesta</p></th>
+                 
+                </tr>
+              <%long=(JSON.parse(dats)).table.length;%>  
               <%for (index=0; index<long; index++){%>
-                <option value="<%= (JSON.parse(dataS)).secciones[index].nombre;%>"><%= (JSON.parse(dataS)).secciones[index].nombre;%></option>
+              <tr>
+                <td class="td"><p> <%= (JSON.parse(dats)).table[index].seccion;%></p></td>
+                <td class="td"><p> <%= (JSON.parse(dats)).table[index].title;%></p></td>
+                <td class="td"><p> <%= (JSON.parse(dats)).table[index].descripcion;%></p></td>
+                <td class="td"><p> <%= (JSON.parse(dats)).table[index].opciones;%></p></td>
+              </tr>
               <%}%>
-             
-          </select>
-          <h2>Listado de Preguntas por sección:</h2>
-              <input type="text" value="" id="text1" name="text1"/>
-            <br>
-            <br>
-            
-        </form>
-      </div>>
-      </div>>       
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </body>
 
