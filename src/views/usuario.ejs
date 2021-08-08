@@ -8,17 +8,26 @@
       <% include partials/head %>
     </head>
     <div class="container p-2">
-      <label class="navbar-brand">Usuarios</label>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>
+    <div class="container-fluid" id="about">
+      <div class="row bg-dark text-white p-5 text-center">
+        
+        <div class="col-sm-6">
+          <h1>
+            <span>Seleccione el usuario</span>
+          </h1>
+        </div>
+      </div>
+    </div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container p-2">
+        <div class="container">
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="/index"><i class="fas fa-home"></i>Docente</a>
+                <a class="nav-link" href="/index" ><i class="fas fa-home"></i>Docente</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/alumno"><i class="fas fa-home"></i>Alumno</a>
@@ -31,21 +40,9 @@
 
 
     <!-- section one dos -->
-    <div class="container-fluid" id="about">
-      <div class="row bg-dark text-white p-5 text-center">
-        <div class="col-sm-6">
-          <span>Examenes Online 2021</span>
-      
-        </div>
-        <div class="col-sm-6">
-          <p>
-            <span>Elija su usuario</span>
-          </p>
-        </div>
-      </div>
-    </div>
+    
 
     <!-- FOOTER -->
-
+    <% include partials/footer %>
   </body>
 </html>
