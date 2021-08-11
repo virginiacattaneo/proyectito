@@ -265,7 +265,7 @@ router.get('/preguntas',(req, res) => {
 router.get('/creaseccion',(req, res) => {
   const data = fs.readFileSync('src/secciones.json', 'utf-8');
   var json = JSON.stringify(JSON.parse(data)); //convert it back to json
-  res.render('creaseccion',  { dats:JSON });
+  res.render('creaseccion',  { dats: json });
 });
 
 router.post('/nuevaseccion',(req, res) => {
@@ -286,7 +286,6 @@ router.post('/nuevaseccion',(req, res) => {
       console.log(obj.secciones[j].nombre);
       console.log(req.body.nombre);
          if (obj.secciones[j].nombre == req.body.nombre ){
-            //res.render('mensaje', { dats: 'seccion ya existe' });
             cont=cont+1;
          }else{
             obj.secciones.push(newObj);
