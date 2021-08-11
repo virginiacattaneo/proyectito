@@ -267,16 +267,26 @@ router.post('/nuevaseccion',(req, res) => {
     const data = fs.readFileSync('src/secciones.json', 'utf-8');
     obj = JSON.parse(data); //now it an object
     long=obj.secciones.length;
+    cont=0;
     for (j=0; j<long; j++){
-          if (obj.secciones[j].nombre == req.body.nombre ){
-            res.render('creaseccion', { dats: 'seccion ya existe' });
-          }   else {
-    obj.secciones.push(newObj);
-         //add some data
-    var json = JSON.stringify(obj); //convert it back to json
-    fs.writeFileSync('src/secciones.json', json, 'utf-8'); // write it back 
-    res.render('listadosecciones', { dats: json });
-    }}});
+      console.log(obj.secciones[j].nombre);
+      console.log(req.body.nombre);
+         if (obj.secciones[j].nombre == req.body.nombre ){
+            //res.render('mensaje', { dats: 'seccion ya existe' });
+            cont=cont+1;
+         }else{
+            obj.secciones.push(newObj);
+            //add some data
+         }
+        }//end for
+      if (cont>=1){  
+        res.render('mensaje', { dats: 'Sección duplicada!!!!' });
+      }else{
+        var json = JSON.stringify(obj); //convert it back to json
+        fs.writeFileSync('src/secciones.json', json, 'utf-8'); // write it back 
+        res.render('listadosecciones', { dats: json });
+      }  
+  });
 
 router.get('/borrar/:id', (req, res) => {
       console.log(req.params.id);
