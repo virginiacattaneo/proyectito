@@ -249,7 +249,9 @@ router.get('/preguntas',(req, res) => {
 
 //SECCIONES 
 router.get('/creaseccion',(req, res) => {
-  res.render('creaseccion',  { dats:'Generar seccion' });
+  const data = fs.readFileSync('src/secciones.json', 'utf-8');
+  var json = JSON.stringify(JSON.parse(data)); //convert it back to json
+  res.render('creaseccion',  { dats:JSON });
 });
 
 router.post('/nuevaseccion',(req, res) => {
@@ -264,11 +266,17 @@ router.post('/nuevaseccion',(req, res) => {
     //esta es para leer los datos que ya tengo en el archivo json
     const data = fs.readFileSync('src/secciones.json', 'utf-8');
     obj = JSON.parse(data); //now it an object
-    obj.secciones.push(newObj); //add some data
+    long=obj.secciones.length;
+    for (j=0; j<long; j++){
+          if (obj.secciones[j].nombre == req.body.nombre ){
+            res.render('creaseccion', { dats: 'seccion ya existe' });
+          }   else {
+    obj.secciones.push(newObj);
+         //add some data
     var json = JSON.stringify(obj); //convert it back to json
     fs.writeFileSync('src/secciones.json', json, 'utf-8'); // write it back 
     res.render('listadosecciones', { dats: json });
-});
+    }}});
 
 router.get('/borrar/:id', (req, res) => {
       console.log(req.params.id);
