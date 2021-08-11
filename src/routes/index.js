@@ -26,10 +26,24 @@ router.get('/about', (req, res) => {
 router.get('/aceptarmensaje', (req, res) => {
   res.render('index', { dats:'Examenes Online 2021'});
 });
+router.get('/error', (req, res) => {
+  res.render('creaseccion', { dats:'error, seccion ya existe '});
+});
 
 router.get('/usuario', (req, res) => {
   res.render('usuario', { dats:'Examenes Online 2021'});
 });
+
+router.get('/mensaje', (req, res) => {
+  const boton = document.querySelector("#miBoton");
+      // Agregar listener
+  /*boton.addEventListener("click", function(evento){
+	      // Aquí todo el código que se ejecuta cuando se da click al botón
+	        console.log('Le ha dado click')
+  });*/
+  res.render('mensaje', { dats:'Le ha dado click'});
+});
+
 
 
 router.post('/usuarioasigexamen', (req, res) => {
@@ -280,7 +294,7 @@ router.post('/nuevaseccion',(req, res) => {
          }
         }//end for
       if (cont>=1){  
-        res.render('mensaje', { dats: 'Sección duplicada!!!!' });
+        res.render('error', { dats: 'la Sección duplicada!!!!' });
       }else{
         var json = JSON.stringify(obj); //convert it back to json
         fs.writeFileSync('src/secciones.json', json, 'utf-8'); // write it back 
