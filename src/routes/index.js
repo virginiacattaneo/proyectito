@@ -31,7 +31,6 @@ router.get('/usuario', (req, res) => {
   res.render('usuario', { dats:'Examenes Online 2021'});
 });
 
-
 router.post('/usuarioasigexamen', (req, res) => {
    var obj = {
    examenes: []
@@ -144,7 +143,6 @@ router.post('/generarexamenfinal', (req, res) => {
       }
       objex.examen.push(elObj);
       elObjexamen.examenes.push(elObj);// {examenes: [{id, fecha, examenes:{preguntas},{preguntas},...}]}    
-      
   }
   if (req.body.guardar == 'Agregar más secciones'){
     var jsonex = JSON.stringify(objex); //convert it back to json
@@ -165,6 +163,7 @@ router.post('/generarexamenfinal', (req, res) => {
     elObjex.examenes.push(elObjexamen); //add some data
     var jsonexam = JSON.stringify(elObjex); //convert it back to json
     fs.writeFileSync('src/listaexamen.json', jsonexam, 'utf-8'); // write it back
+    fs.writeFileSync('src/public/examenalumno.json', jsonexam, 'utf-8'); // write it back
     res.render('index', { dats: jsonex });//ver esto despues
   }
   
@@ -267,7 +266,7 @@ router.post('/nuevaseccion',(req, res) => {
     const data = fs.readFileSync('src/secciones.json', 'utf-8');
     obj = JSON.parse(data); //now it an object
     long=obj.secciones.length;
-    cont=0;
+    cont=1;
     for (j=0; j<long; j++){
       console.log(obj.secciones[j].nombre);
       console.log(req.body.nombre);
@@ -279,7 +278,7 @@ router.post('/nuevaseccion',(req, res) => {
             //add some data
          }
         }//end for
-      if (cont>=1){  
+      if (cont>1){  
         res.render('mensaje', { dats: 'Sección duplicada!!!!' });
       }else{
         var json = JSON.stringify(obj); //convert it back to json

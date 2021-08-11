@@ -21,6 +21,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(body_parser.urlencoded({extended:true}));
 
 // listening the Server
-app.listen(app.get('port'), () => {
+const server= app.listen(app.get('port'), () => {
   console.log('Server on port', app.get('port'));
 });
+
+var io=require('socket.io')(server);
+
+var messages = [
+  {
+    id: 1,
+    text: "Hola soy un mensaje",
+    author: "Carito",
+  },
+];
+
+io.on('connection', function (socket) {
+  console.log("Alguien se ha conectado con Sockets",socket.id);
+  socket.on("new-message", function (data) {
+    messages.push(data);
+    io.emit("messages", messages);
+  });
+})
