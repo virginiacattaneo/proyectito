@@ -19,8 +19,8 @@
             <% if ((JSON.parse(dats)).examenes[index].opciones == 'Varias opciones'){%>
                 <%long1=(JSON.parse(dats)).examenes[index].titleopcion.length;%> 
                 <%for (index1=0; index1<long1; index1++){%>
-                        <input type="checkbox" id="checkboxtitleopcion" name="checkboxtitleopcion" value="<%= (JSON.parse(dats)).examenes[index].titleopcion[index1];%>">
-                        <div class="pregunta"><p style="text-align:left"><%= (JSON.parse(dats)).examenes[index].titleopcion[index1];%></p></div><br>
+                      <div class="pregunta"><input type="checkbox" id="checkboxtitleopcion" name="checkboxtitleopcion" value="<%= (JSON.parse(dats)).examenes[index].titleopcion[index1];%>">
+                      <%= (JSON.parse(dats)).examenes[index].titleopcion[index1];%></div><br>
                         <%}%> 
                 <%}
                   if ((JSON.parse(dats)).examenes[index].opciones == 'Respuesta corta'){%> 
