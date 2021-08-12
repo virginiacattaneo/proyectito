@@ -136,7 +136,6 @@ router.post('/generarexamenfinal', (req, res) => {
         elObj = {
           seccion: obje.examen[i].seccion,
           title: obje.examen[i].title,
-          //puntaje?????
           puntaje: req.body.puntaje[i],
           descripcion: obje.examen[i].descripcion,
           opciones: obje.examen[i].opciones,
@@ -170,7 +169,6 @@ router.post('/generarexamenfinal', (req, res) => {
   }
   
 });
-
 
 router.post('/generarexamen', (req, res) => {
   var obj = {
@@ -270,9 +268,15 @@ router.post('/nuevaseccion',(req, res) => {
          if (obj.secciones[j].nombre == req.body.nombre){
             cont=cont+1;
          }
+<<<<<<< HEAD
     };//end for
     if (cont>=1){  
         res.render('error', { dats: 'Sección duplicada!!!!' });
+=======
+        }//end for
+      if (cont>=1){  
+        res.render('error', { dats: 'la Sección ya existe!!' });
+>>>>>>> 6496c5313496ec875e7e1e080891873211ee69aa
       }else{
         newObj = {
           id: uuid(),
