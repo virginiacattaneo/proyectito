@@ -10,17 +10,21 @@
     <script src="main.js"></script>
     
     <script>
-    window.onload = function() {
+      window.onload = function() {
         inactivityTime(); 
-      }</script>
+      }
+    </script>
      
   </head>
   <body>
+    <form onsubmit="return addMessage(this)">
+      <div id="canvas" width="2000" height="1000">
+        <h1>¡Bienvenido a tu examen!</h1>
+        <div id="messages"></div>
     <ul>
     </ul>
     
     <script>
-      
       function getParameterByName(name) {
         name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
         var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -38,35 +42,37 @@
         throw new Error("HTTP error, status = " + response.status);
       }
       return response.json();
-    })
-    .then(function(json) {
+      })
+      .then(function(json) {
       for(var i = 0; i < json.examenes.length; i++) {
-        var idbuscado= json.examenes[i].id;
+       var idbuscado= json.examenes[i].id;
        
        if(idbuscado == idrecuperado){
-        console.log(idbuscado);
+        
         var listItem = document.createElement('li');
-        listItem.innerHTML +=' Alumno: ' + json.examenes[i].alumnoasignado ;
-        '<br>'+'Preguntas'+'<br>';
+        listItem.innerHTML +=' Alumno DNI: <strong>' + json.examenes[i].alumnoasignado + '</strong><br>';
+        
         var preguntas=json.examenes[i].examenes.length;
         for(var j = 0; j < preguntas; j++) {
-          var listItem1 = document.createElement('li');
+            var listItem1 = document.createElement('li');
             listItem1.innerHTML += ' Sección: <strong>' +json.examenes[i].examenes[j].seccion + '</strong><br>';
             listItem1.innerHTML += ' Titulo: <strong>' +json.examenes[i].examenes[j].title + '</strong><br>';
-            listItem1.innerHTML += ' Descripcion: <strong>' +json.examenes[i].examenes[j].descripcion + '</strong><br>';
+            listItem1.innerHTML += ' Descripción: <strong>' +json.examenes[i].examenes[j].descripcion + '</strong><br>';
             if (json.examenes[i].examenes[j].opciones == 'Respuesta corta'){
-              listItem1.innerHTML += '<textarea class="floating-form-control floating-textarea"></textarea>';
+              listItem1.innerHTML +='Escribe aquí tu respuesta:'+'<br>';
+              listItem1.innerHTML += '<textarea name="respuestacorta">'+'</textarea>'+'<br>';
             }
             if (json.examenes[i].examenes[j].opciones == 'Varias opciones'){
-              var preguntasvarias=json.examenes[i].examenes.length;
+              var preguntasvarias=json.examenes[i].examenes[j].titleopcion.length;
+              listItem1.innerHTML +='<br>'+'Preguntas:'+'<br>';
               for(var k = 0; k < preguntasvarias; k++) {
-                 listItem1.innerHTML += '<input type="checkbox">'+json.examenes[i].examenes[j].titleopcion[k] + '</label><br>'
+                 listItem1.innerHTML += '<input type="checkbox">'+json.examenes[i].examenes[j].titleopcion[k] + '<br>'
               }
             }
 
-            myList1.appendChild(listItem1);
+            myList1.appendChild(listItem1);//asigna primero las preguntas
           }
-        myList.appendChild(listItem);
+        myList.appendChild(listItem);//asigna el dni alumno
       }}
     })
     .catch(function(error) {
@@ -80,16 +86,13 @@
 
     </script>
     
-    <div id="canvas" width="2000" height="1000">
-    <h1>¡Bienvenido a tu examen!</h1>
-    <div id="messages"></div>
+    
     <br/>
-    <form onsubmit="return addMessage(this)">
-      <input type="text" id="username" placeholder="Tu Nombre y apellido" /> <br><br>
-      <input type="text" id="texto" placeholder="Ingresa el código del Examen" />
-      <input type="submit" value="Enviar!" />
-    </form>
-   
-</div>        
+    
+      <input type="text" id="username"> 
+      <!--<input type="text" id="texto" placeholder="Ingresa el código del Examen">
+      <input type="submit" value="Enviar!">-->
+    </div>  
+    </form>      
      </body>
 </html>

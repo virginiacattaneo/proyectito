@@ -36,7 +36,7 @@
                   <td class="td"><p><form action="/borrarexamen/<%=(JSON.parse(dats)).examenes[index].id%>" method="get"><button class="btn btn-primary btn-block">Borrar</button></form><p></td>
                   <td class="td"><p>
                     <form action="/asignaralumno" method="POST">
-                    <select class="floating-select" name="alumnoasignado" onclick="this.setAttribute('value', this.value);" value=""  multiple  required>
+                    <select class="floating-select" name="alumnoasignado" onclick="this.setAttribute('value', this.value);" value="" required>
                     <option value="">Elegir estudiante</option>
                     <%for (index1=0; index1<longA; index1++){%>
                       <option value="<%= (JSON.parse(datsA)).alumnos[index1].DNI;%>"><%= (JSON.parse(datsA)).alumnos[index1].nombrecompleto;%></option>

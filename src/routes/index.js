@@ -27,45 +27,12 @@ router.get('/aceptarmensaje', (req, res) => {
   res.render('index', { dats:'Examenes Online 2021'});
 });
 router.get('/error', (req, res) => {
-  res.render('creaseccion', { dats:'error, seccion ya existe '});
+  res.render('creaseccion', { dats:'error, sección ya existe '});
 });
 
 router.get('/usuario', (req, res) => {
   res.render('usuario', { dats:'Examenes Online 2021'});
 });
-
-/*router.post('/usuarioasigexamen', (req, res) => {
-   var obj = {
-   examenes: []
- };
- 
- //esta es para leer los datos que ya tengo en el archivo json
- const data = fs.readFileSync('src/listaexamen.json', 'utf-8');
- obj = JSON.parse(data); //now it an object
- long=obj.examenes.length;
- var objex = {
-  examenes: []
- };
- cont=0;
- for (j=0; j<long; j++){
-   if(obj.examenes[j].id == req.body.examencod){
-    objex = {
-      id: obj.examenes[j].id,
-      alumnoasignado: obj.examenes[j].alumnoasignado,
-      examenes: obj.examenes[j].examenes,
-    }
-    cont=cont+1;
-   }
- }
- if(cont>=1){
-    var json = JSON.stringify(objex); //convert it back to json
-    fs.writeFileSync('src/examenalumno.json', json, 'utf-8'); // write it back
-    res.render('examen', { dats: json});
- }else{
-    res.render('usuarioalumno', { dats: 'codigo mal ingresado'}); 
- }
- 
-});*/
 
 
 //EXAMENES
@@ -96,8 +63,8 @@ router.post('/asignaralumno', (req, res) => {
   }
   var json = JSON.stringify(obj); //convert it back to json
   fs.writeFileSync('src/listaexamen.json', json, 'utf-8'); // write it back
+  fs.writeFileSync('src/public/examenalumno.json', json, 'utf-8'); // write it back
   
-
   const dataA = fs.readFileSync('src/alumnos.json', 'utf-8');
   var jsonA = JSON.stringify(JSON.parse(dataA)); //convert it back to json
   res.render('listadoexamen', { dats: json , datsA:jsonA});
@@ -112,9 +79,6 @@ router.get('/listadoexamen', (req, res) => {
   var jsonA = JSON.stringify(JSON.parse(dataA)); //convert it back to json
   res.render('listadoexamen', { dats: json , datsA:jsonA});
 })
-
-
-
 
 router.post('/generarexamenfinal', (req, res) => {
   var obje = {
@@ -261,32 +225,30 @@ router.post('/nuevaseccion',(req, res) => {
     var obj = {
       secciones: []
     };
-    var newObj = {
-      id: uuid(),
-      nombre,
-    };
+    var newObj = {};
     //esta es para leer los datos que ya tengo en el archivo json
     const data = fs.readFileSync('src/secciones.json', 'utf-8');
     obj = JSON.parse(data); //now it an object
     long=obj.secciones.length;
-    cont=1;
+    cont=0;
     for (j=0; j<long; j++){
-      console.log(obj.secciones[j].nombre);
-      console.log(req.body.nombre);
-         if (obj.secciones[j].nombre == req.body.nombre ){
+         if (obj.secciones[j].nombre == req.body.nombre){
             cont=cont+1;
-         }else{
-            obj.secciones.push(newObj);
-            //add some data
          }
-        }//end for
-      if (cont>=1){  
-        res.render('error', { dats: 'la Sección ya existe!!' });
+    };//end for
+    if (cont>=1){  
+        res.render('error', { dats: 'Sección duplicada!!!!' });
       }else{
+        newObj = {
+          id: uuid(),
+          nombre,
+        };
+        obj.secciones.push(newObj);
+        //add some data
         var json = JSON.stringify(obj); //convert it back to json
         fs.writeFileSync('src/secciones.json', json, 'utf-8'); // write it back 
         res.render('listadosecciones', { dats: json });
-      }  
+    };  
   });
 
 router.get('/borrar/:id', (req, res) => {
@@ -368,8 +330,9 @@ router.post('/nuevapregunta',(req, res) => {
   var obj = {
     table: []
   };
+  var newObj = {};
   if (opciones =='Varias opciones'){
-    var newObj = {
+    newObj = {
      id: uuid(), 
      seccion,
      title,  
@@ -379,7 +342,7 @@ router.post('/nuevapregunta',(req, res) => {
      titleopcion: ['Opción 1'],
    };
   }else{
-    var newObj = {
+    newObj = {
       id: uuid(), 
       seccion,
       title,  
@@ -422,6 +385,7 @@ router.post('/otras_respuesta/:id',(req, res) => {
   long=obj.table.length;
   for (j=0; j<long; j++){
     if(obj.table[j].id == req.params.id){
+      console.log(req.body.checkboxtitleopcion);
       if (req.body.checkboxtitleopcion==''){
         elObj = {
           id: req.params.id,

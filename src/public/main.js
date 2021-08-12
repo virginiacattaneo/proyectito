@@ -27,7 +27,7 @@ socket.on("messages", function (data) {
   function addMessage(e) {
     var mensaje = {
       Nombre: document.getElementById("username").value,
-      Examen: document.getElementById("texto").value,
+      //Examen: document.getElementById("texto").value,
     };
   
     socket.emit("new-message", mensaje);
@@ -54,7 +54,7 @@ socket.on("messages", function (data) {
     
     function resetTimer() {
         clearTimeout(time);
-        time = setTimeout(logout, 7000)
+        time = setTimeout(logout, 10000)
         // 1000 milliseconds = 1 second
         }
     };
