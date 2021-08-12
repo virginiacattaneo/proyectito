@@ -92,12 +92,7 @@ th, td {
   caption-side: bottom;
   background: #fff;
 }
-preguntasecciones {
-  background-color: #348AC7;
-  color: #cccccc;
-  font-size: medium;
-  text-align: center;
-}
+
 div.contenedor {
   width: 100%; 
 }

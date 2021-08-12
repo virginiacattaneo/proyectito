@@ -139,7 +139,6 @@ router.post('/generarexamenfinal', (req, res) => {
         elObj = {
           seccion: obje.examen[i].seccion,
           title: obje.examen[i].title,
-          //puntaje?????
           puntaje: req.body.puntaje[i],
           descripcion: obje.examen[i].descripcion,
           opciones: obje.examen[i].opciones,
@@ -173,7 +172,6 @@ router.post('/generarexamenfinal', (req, res) => {
   }
   
 });
-
 
 router.post('/generarexamen', (req, res) => {
   var obj = {
@@ -283,7 +281,7 @@ router.post('/nuevaseccion',(req, res) => {
          }
         }//end for
       if (cont>=1){  
-        res.render('error', { dats: 'la Sección duplicada!!!!' });
+        res.render('error', { dats: 'la Sección ya existe!!' });
       }else{
         var json = JSON.stringify(obj); //convert it back to json
         fs.writeFileSync('src/secciones.json', json, 'utf-8'); // write it back 
