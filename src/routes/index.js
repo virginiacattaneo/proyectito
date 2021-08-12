@@ -34,7 +34,7 @@ router.get('/usuario', (req, res) => {
   res.render('usuario', { dats:'Examenes Online 2021'});
 });
 
-router.post('/usuarioasigexamen', (req, res) => {
+/*router.post('/usuarioasigexamen', (req, res) => {
    var obj = {
    examenes: []
  };
@@ -65,7 +65,7 @@ router.post('/usuarioasigexamen', (req, res) => {
     res.render('usuarioalumno', { dats: 'codigo mal ingresado'}); 
  }
  
-});
+});*/
 
 
 //EXAMENES
@@ -124,8 +124,10 @@ router.post('/generarexamenfinal', (req, res) => {
   var elObjex = {
     examenes : []
   };
+  var objFecha = new Date();
+  var fechaA=objFecha.toLocaleDateString();
   var elObjexamen = {
-    id: uuid(), fecha: new Date(),alumnoasignado:"", examenes: [],
+    id: uuid(), fecha: fechaA, alumnoasignado:"", examenes: [],
   };
   const dato = fs.readFileSync('src/examen.json', 'utf-8');
   obje = JSON.parse(dato); //now it an object
