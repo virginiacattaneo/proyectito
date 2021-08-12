@@ -26,6 +26,9 @@ router.get('/about', (req, res) => {
 router.get('/aceptarmensaje', (req, res) => {
   res.render('index', { dats:'Examenes Online 2021'});
 });
+router.get('/error', (req, res) => {
+  res.render('creaseccion', { dats:'error, seccion ya existe '});
+});
 
 router.get('/usuario', (req, res) => {
   res.render('usuario', { dats:'Examenes Online 2021'});
@@ -250,7 +253,7 @@ router.get('/preguntas',(req, res) => {
 router.get('/creaseccion',(req, res) => {
   const data = fs.readFileSync('src/secciones.json', 'utf-8');
   var json = JSON.stringify(JSON.parse(data)); //convert it back to json
-  res.render('creaseccion',  { dats:JSON });
+  res.render('creaseccion',  { dats: json });
 });
 
 router.post('/nuevaseccion',(req, res) => {
@@ -271,15 +274,14 @@ router.post('/nuevaseccion',(req, res) => {
       console.log(obj.secciones[j].nombre);
       console.log(req.body.nombre);
          if (obj.secciones[j].nombre == req.body.nombre ){
-            //res.render('mensaje', { dats: 'seccion ya existe' });
             cont=cont+1;
          }else{
             obj.secciones.push(newObj);
             //add some data
          }
         }//end for
-      if (cont>1){  
-        res.render('mensaje', { dats: 'Sección duplicada!!!!' });
+      if (cont>=1){  
+        res.render('error', { dats: 'la Sección duplicada!!!!' });
       }else{
         var json = JSON.stringify(obj); //convert it back to json
         fs.writeFileSync('src/secciones.json', json, 'utf-8'); // write it back 

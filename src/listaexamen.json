@@ -1,1 +1,13 @@
-{"examenes":[{"id":"87ea64d9-5a43-4d7e-b68d-e973177a719a","fecha":"2021-08-05T21:23:54.571Z","alumnoasignado":"44254123","examenes":[{"seccion":"Seccion 1","title":"P1 ","descripcion":"Descripción de la preguntdgdgfda","opciones":"Respuesta corta","checkboxtitleopcion":[],"titleopcion":[]}]}]}
+{"examenes":[
+    {"id":"87ea64d9-5a43-4d7e-b68d-e973177a719a",
+    "fecha":"2021-08-05T21:23:54.571Z",
+    "alumnoasignado":"44254123",
+    "examenes":[
+        {"seccion":"Seccion 1",
+        "title":"Pregunta número 1 de la sección 1",
+        "descripcion":"Descripción de la pregunta a desarrollar",
+        "opciones":"Respuesta corta",
+        "checkboxtitleopcion":[],"titleopcion":[]}
+        ]
+    }
+    ]}
