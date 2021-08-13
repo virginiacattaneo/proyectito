@@ -8,19 +8,7 @@ const {uuid} = require('uuidv4');
 const { Console } = require('console');
 
 router.get('/', (req, res) => {
-  res.render('usuario', { dats:'Examenes Online 2021'});
-});
-
-router.get('/index', (req, res) => {
   res.render('index', { dats:'Examenes Online 2021'});
-});
-
-router.get('/alumno', (req, res) => {
-  res.render('usuarioalumno', { dats:'Examenes Online 2021'});
-});
-
-router.get('/about', (req, res) => {
-  res.render('about', { dats:'Examenes Online 2021'});
 });
 
 router.get('/aceptarmensaje', (req, res) => {
@@ -29,11 +17,6 @@ router.get('/aceptarmensaje', (req, res) => {
 router.get('/error', (req, res) => {
   res.render('creaseccion', { dats:'error, sección ya existe '});
 });
-
-router.get('/usuario', (req, res) => {
-  res.render('usuario', { dats:'Examenes Online 2021'});
-});
-
 
 //EXAMENES
 router.get('/asignarexamen', (req, res) => {
