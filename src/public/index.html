@@ -5,7 +5,9 @@
     <title>My Aplicación con Sockets</title>
     <script src="/socket.io/socket.io.js"></script>
     <script src="main.js"></script>
-    <script src="main.js"></script>
+    <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+    <script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
+
     
     <script>
       window.onload = function() {
@@ -15,9 +17,7 @@
      
   </head>
   <body>
-    <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
-    <script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
-    <form onsubmit="return addMessage(this)">
+      <form onsubmit="return addMessage(this)">
       
       <div id="canvas" width="2000" height="1000">
         <h1>¡Bienvenido a tu examen!</h1>
@@ -102,5 +102,5 @@
       <input type="submit" value="Enviar!">-->
     </div>  
     </form>      
-     </body>
+  </body>
 </html>

@@ -30,8 +30,8 @@ var io=require('socket.io')(server);
 var messages = [
   {
     id: 1,
-    text: "Hola soy un mensaje",
-    author: "Carito",
+    text: "Hola soy un mensaje :)",
+    author: "Grupo WhatsApp Estudiantes del Profesorado :)",
   },
 ];
 
