@@ -314,9 +314,9 @@ router.get('/borrarexamen/:id', (req, res) => {
         //ver para borrar el arreglo de preguntas
         examenes:obj.examenes[j].examenes
         
-      };
+      }};
       newobj.examenes.push(elObj);
-    }
+    
   }
 
   const json_dats = JSON.stringify(newobj);
