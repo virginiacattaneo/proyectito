@@ -30,6 +30,7 @@ router.get('/asignarexamen', (req, res) => {
 router.post('/asignaralumno', (req, res) => {
    const  { alumnoasignado }  =  req.body;
    const {idexamen}=req.body;
+   const {emailA}=req.body;
     var obj = {
     examenes: []
   };
@@ -42,6 +43,8 @@ router.post('/asignaralumno', (req, res) => {
   for (j=0; j<long; j++){
     if(obj.examenes[j].id == idexamen){
         obj.examenes[j].alumnoasignado =alumnoasignado;
+        obj.examenes[j].URL = "localhost:3000/index.html?examencod="+idexamen;
+        obj.examenes[j].email = emailA;
     }
   }
   var json = JSON.stringify(obj); //convert it back to json
@@ -74,7 +77,7 @@ router.post('/generarexamenfinal', (req, res) => {
   var objFecha = new Date();
   var fechaA=objFecha.toLocaleDateString();
   var elObjexamen = {
-    id: uuid(), fecha: fechaA, alumnoasignado:"", examenes: [],
+    nombre: req.body.nombre, id: uuid(), fecha: fechaA, alumnoasignado:"", URL:"", email:"", examenes: [],
   };
   const dato = fs.readFileSync('src/examen.json', 'utf-8');
   obje = JSON.parse(dato); //now it an object
