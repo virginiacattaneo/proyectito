@@ -5,8 +5,6 @@
     <title>My Aplicación con Sockets</title>
     <script src="/socket.io/socket.io.js"></script>
     <script src="main.js"></script>
-    <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
-    <script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
     <script src="main.js"></script>
     
     <script>
@@ -17,7 +15,10 @@
      
   </head>
   <body>
+    <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+    <script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
     <form onsubmit="return addMessage(this)">
+      
       <div id="canvas" width="2000" height="1000">
         <h1>¡Bienvenido a tu examen!</h1>
         <div id="messages"></div>
@@ -48,25 +49,32 @@
        var idbuscado= json.examenes[i].id;
        
        if(idbuscado == idrecuperado){
-        
         var listItem = document.createElement('li');
-        listItem.innerHTML +=' Alumno DNI: <strong>' + json.examenes[i].alumnoasignado + '</strong><br>';
+        listItem.innerHTML +=' Alumno DNI: <strong>' + '<input type="text" id="username" value='+ '"' + json.examenes[i].alumnoasignado + '"' + '>' + '</strong><br>';
         
         var preguntas=json.examenes[i].examenes.length;
         for(var j = 0; j < preguntas; j++) {
             var listItem1 = document.createElement('li');
             listItem1.innerHTML += ' Sección: <strong>' +json.examenes[i].examenes[j].seccion + '</strong><br>';
+            listItem1.innerHTML += '<br>';
             listItem1.innerHTML += ' Titulo: <strong>' +json.examenes[i].examenes[j].title + '</strong><br>';
+            listItem1.innerHTML += '<br>';
+            listItem1.innerHTML += ' Puntaje: <strong>' +json.examenes[i].examenes[j].puntaje + '</strong><br>';
+            listItem1.innerHTML += '<br>';
             listItem1.innerHTML += ' Descripción: <strong>' +json.examenes[i].examenes[j].descripcion + '</strong><br>';
+            listItem1.innerHTML += '<br>';
             if (json.examenes[i].examenes[j].opciones == 'Respuesta corta'){
               listItem1.innerHTML +='Escribe aquí tu respuesta:'+'<br>';
-              listItem1.innerHTML += '<textarea name="respuestacorta">'+'</textarea>'+'<br>';
+              listItem1.innerHTML += '<textarea rows="10" cols="80">'+'</textarea>'+'<br>';
+              listItem1.innerHTML += '<br>';
             }
             if (json.examenes[i].examenes[j].opciones == 'Varias opciones'){
               var preguntasvarias=json.examenes[i].examenes[j].titleopcion.length;
               listItem1.innerHTML +='<br>'+'Preguntas:'+'<br>';
+              listItem1.innerHTML += '<br>'
               for(var k = 0; k < preguntasvarias; k++) {
                  listItem1.innerHTML += '<input type="checkbox">'+json.examenes[i].examenes[j].titleopcion[k] + '<br>'
+                 listItem1.innerHTML += '<br>'
               }
             }
 
@@ -89,7 +97,7 @@
     
     <br/>
     
-      <input type="text" id="username"> 
+      <!--<input type="text" id="username"> -->
       <!--<input type="text" id="texto" placeholder="Ingresa el código del Examen">
       <input type="submit" value="Enviar!">-->
     </div>  
