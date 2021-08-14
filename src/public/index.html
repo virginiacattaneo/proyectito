@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>My Aplicación con Sockets</title>
+    <title>Examenes Online 2021</title>
     <script src="/socket.io/socket.io.js"></script>
     <script src="main.js"></script>
     <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
@@ -44,7 +44,7 @@
        
        if(idbuscado == idrecuperado){
         var listItem = document.createElement('li');
-        listItem.innerHTML +=' Alumno DNI: <strong>' + '<input type="text" id="username" value='+ '"' + json.examenes[i].alumnoasignado + '"' + '>' + '</strong><br>';
+        listItem.innerHTML +=' Alumno: <strong>' + '<input type="text" id="username" value='+ '"' + json.examenes[i].alumnoasignado + '"' + '>' + '</strong><br>';
         
         var preguntas=json.examenes[i].examenes.length;
         for(var j = 0; j < preguntas; j++) {
