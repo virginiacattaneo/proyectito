@@ -28,7 +28,7 @@
                 <tr>
                   <td class="td"><p><%= (JSON.parse(dats)).examenes[index].fecha;%></p></td>
                   <td class="td"><p><%= (JSON.parse(dats)).examenes[index].nombre;%></p></td>
-                  <td class="td"><p><%= (JSON.parse(dats)).examenes[index].email;%></p></td>
+                  <td class="td"><p><%= (JSON.parse(dats)).examenes[index].alumnoasignado;%></p></td>
                   <td class="td"><p><%= (JSON.parse(dats)).examenes[index].URL;%></p></td>
                   <td class="td"><p><a href="mailto:<%= (JSON.parse(dats)).examenes[index].email;%>?Subject=<%= (JSON.parse(dats)).examenes[index].nombre;%>&body=Para ingresar al examen copie la siguiente dirección en su navegador http://localhost:3000/alumno.html y acceda con el siguiente c&oacute;digo: <%= (JSON.parse(dats)).examenes[index].id;%>">Enviar examen</a></p></td>
                 </tr>
@@ -37,10 +37,7 @@
               }%> 
                
               </table>
-
-
-
-            </div>
+           </div>
           </div>
         </div>
       </div>
