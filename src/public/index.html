@@ -6,7 +6,6 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="main.js"></script>
     <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
-    <script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
     <script>
       window.onload = function() {
         inactivityTime(); 
@@ -20,7 +19,7 @@
         <div id="messages"></div>
     <ul>
     </ul>
-    <script>
+    <script type="text/javascript">
       function getParameterByName(name) {
         name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
         var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -59,6 +58,7 @@
             listItem1.innerHTML += '<br>';
             if (json.examenes[i].examenes[j].opciones == 'Respuesta corta'){
               listItem1.innerHTML +='Escribe aquí tu respuesta:'+'<br>';
+              bkLib.onDomLoaded(nicEditors.allTextAreas);
               listItem1.innerHTML += '<textarea rows="10" cols="80">'+'</textarea>'+'<br>';
               listItem1.innerHTML += '<br>';
             }
