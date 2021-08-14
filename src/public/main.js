@@ -24,7 +24,6 @@ function addMessage(e) {
     
     function logout() {
         alert("Ha pasado un tiempo sin aportar al examen, se informa al profesor");
-         //location.href = 'logout.html'
          var message = {
             estado: "desconectado hace 5 minutos",
             alumno: document.getElementById("username").value,
