@@ -9,7 +9,6 @@ socket.on("messages", function (data) {
 function addMessage(e) {
     var mensaje = {
       Nombre: document.getElementById("username").value,
-      //Examen: document.getElementById("texto").value,
     };
   
     socket.emit("new-message", mensaje);
@@ -27,7 +26,7 @@ function addMessage(e) {
         alert("Ha pasado un tiempo sin aportar al examen, se informa al profesor");
          //location.href = 'logout.html'
          var message = {
-            estado: "desconectado hace 3 segundos",
+            estado: "desconectado hace 5 minutos",
             alumno: document.getElementById("username").value,
           };
           console.log(message);
@@ -36,9 +35,8 @@ function addMessage(e) {
     
     function resetTimer() {
         clearTimeout(time);
-        time = setTimeout(logout, 8000)
-        // 1000 milliseconds = 1 second
-        }
+        time = setTimeout(logout, 300000)
+         }
     };
     
         
