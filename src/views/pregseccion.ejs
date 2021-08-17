@@ -1,41 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Listado preguntas por Secciones</title>
-    <% include partials/head %>
-  </head>
-  <body>
-    <% include partials/navigation %>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Listado preguntas por Secciones</title>
+  <% include partials/head %>
+</head>
+
+<body>
+  <% include partials/navigation %>
     <div class="container p-5">
       <div class="row">
-        
-       
-              <h2>Preguntas por secciones</h2>
-            <br>
-            <br>
-    <table class="preguntasecciones">
-                <tr>
-                  <th class="th"><p>Secciones</p></th>
-                  <th class="th"><p>Preguntas</p></th>
-                  <th class="th"><p>Descripcion</p></th>
-                  <th class="th"><p>Tipo de Respuesta</p></th>
-                </tr>
-              <%long=(JSON.parse(dats)).table.length;%>  
-              <%for (index=0; index<long; index++){%>
+
+
+        <h2>Preguntas por secciones</h2>
+        <br>
+        <br>
+        <table class="preguntasecciones">
+          <tr>
+            <th class="th">
+              <p>Secciones</p>
+            </th>
+            <th class="th">
+              <p>Preguntas</p>
+            </th>
+            <th class="th">
+              <p>Descripcion</p>
+            </th>
+            <th class="th">
+              <p>Tipo de Respuesta</p>
+            </th>
+          </tr>
+          <%long=(JSON.parse(dats)).table.length;%>
+            <%for (index=0; index<long; index++){%>
               <tr>
-                <td class="td"><p> <%= (JSON.parse(dats)).table[index].seccion;%></p></td>
-                <td class="td"><p> <%= (JSON.parse(dats)).table[index].title;%></p></td>
-                <td class="td"><p> <%= (JSON.parse(dats)).table[index].descripcion;%></p></td>
-                <td class="td"><p> <%= (JSON.parse(dats)).table[index].opciones;%></p></td>
+                <td class="td">
+                  <p>
+                    <%= (JSON.parse(dats)).table[index].seccion;%>
+                  </p>
+                </td>
+                <td class="td">
+                  <p>
+                    <%= (JSON.parse(dats)).table[index].title;%>
+                  </p>
+                </td>
+                <td class="td">
+                  <p>
+                    <%= (JSON.parse(dats)).table[index].descripcion;%>
+                  </p>
+                </td>
+                <td class="td">
+                  <p>
+                    <%= (JSON.parse(dats)).table[index].opciones;%>
+                  </p>
+                </td>
               </tr>
               <%}%>
-          
-    </table>
-  </div>
-</div>
-    <% include partials/footer %> 
-  </body>
-  
- 
-  </html>
+
+        </table>
+      </div>
+    </div>
+    <% include partials/footer %>
+</body>
+
+
+</html>

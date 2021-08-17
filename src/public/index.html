@@ -1,93 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Examenes Online 2021</title>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="main.js"></script>
-    <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
-    <script>
-      window.onload = function() {
-        inactivityTime(); 
-      }
-    </script>
-  </head>
-  <body>
-      <form onsubmit="return addMessage(this)">
-      <div id="canvas" width="2000" height="1000">
-        <h1>¡Bienvenido a tu examen!</h1>
-        <div id="messages"></div>
-    <ul>
-    </ul>
-    <script type="text/javascript">
-      function getParameterByName(name) {
-        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-        results = regex.exec(location.search);
-        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-      }
-      var idrecuperado=getParameterByName("examencod");
-      var myList = document.querySelector('ul');
-      var myList1 = document.querySelector('ul');
-    
 
-     fetch('examenalumno.json').then(function(response) {
-      if (!response.ok) {
-        throw new Error("HTTP error, status = " + response.status);
-      }
-      return response.json();
-      })
-      .then(function(json) {
-      for(var i = 0; i < json.examenes.length; i++) {
-       var idbuscado= json.examenes[i].id;
-       
-       if(idbuscado == idrecuperado){
-        var listItem = document.createElement('li');
-        listItem.innerHTML +=' Alumno: <strong>' + '<input type="text" id="username" value='+ '"' + json.examenes[i].alumnoasignado + '"' + '>' + '</strong><br>';
-        
-        var preguntas=json.examenes[i].examenes.length;
-        for(var j = 0; j < preguntas; j++) {
-            var listItem1 = document.createElement('li');
-            listItem1.innerHTML += ' Sección: <strong>' +json.examenes[i].examenes[j].seccion + '</strong><br>';
-            listItem1.innerHTML += '<br>';
-            listItem1.innerHTML += ' Titulo: <strong>' +json.examenes[i].examenes[j].title + '</strong><br>';
-            listItem1.innerHTML += '<br>';
-            listItem1.innerHTML += ' Puntaje: <strong>' +json.examenes[i].examenes[j].puntaje + '</strong><br>';
-            listItem1.innerHTML += '<br>';
-            listItem1.innerHTML += ' Descripción: <strong>' +json.examenes[i].examenes[j].descripcion + '</strong><br>';
-            listItem1.innerHTML += '<br>';
-            if (json.examenes[i].examenes[j].opciones == 'Respuesta corta'){
-              listItem1.innerHTML +='Escribe aquí tu respuesta:'+'<br>';
-              bkLib.onDomLoaded(nicEditors.allTextAreas);
-              listItem1.innerHTML += '<textarea rows="10" cols="80">'+'</textarea>'+'<br>';
-              listItem1.innerHTML += '<br>';
-            }
-            if (json.examenes[i].examenes[j].opciones == 'Varias opciones'){
-              var preguntasvarias=json.examenes[i].examenes[j].titleopcion.length;
-              listItem1.innerHTML +='<br>'+'Preguntas:'+'<br>';
-              listItem1.innerHTML += '<br>'
-              for(var k = 0; k < preguntasvarias; k++) {
-                 listItem1.innerHTML += '<input type="checkbox">'+json.examenes[i].examenes[j].titleopcion[k] + '<br>'
-                 listItem1.innerHTML += '<br>'
+<head>
+  <meta charset="UTF-8" />
+  <title>Examenes Online 2021</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="main.js"></script>
+  <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+  <script>
+    window.onload = function () {
+      inactivityTime();
+    }
+  </script>
+</head>
+
+<body>
+  <form onsubmit="return addMessage(this)">
+    <div id="canvas" width="2000" height="1000">
+      <h1>¡Bienvenido a tu examen!</h1>
+      <div id="messages"></div>
+      <ul>
+      </ul>
+      <script type="text/javascript">
+        function getParameterByName(name) {
+          name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+          var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+          return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+        var idrecuperado = getParameterByName("examencod");
+        var myList = document.querySelector('ul');
+        var myList1 = document.querySelector('ul');
+
+
+        fetch('examenalumno.json').then(function (response) {
+          if (!response.ok) {
+            throw new Error("HTTP error, status = " + response.status);
+          }
+          return response.json();
+        })
+          .then(function (json) {
+            for (var i = 0; i < json.examenes.length; i++) {
+              var idbuscado = json.examenes[i].id;
+
+              if (idbuscado == idrecuperado) {
+                var listItem = document.createElement('li');
+                listItem.innerHTML += ' Alumno: <strong>' + '<input type="text" id="username" value=' + '"' + json.examenes[i].alumnoasignado + '"' + '>' + '</strong><br>';
+
+                var preguntas = json.examenes[i].examenes.length;
+                for (var j = 0; j < preguntas; j++) {
+                  var listItem1 = document.createElement('li');
+                  listItem1.innerHTML += ' Sección: <strong>' + json.examenes[i].examenes[j].seccion + '</strong><br>';
+                  listItem1.innerHTML += '<br>';
+                  listItem1.innerHTML += ' Titulo: <strong>' + json.examenes[i].examenes[j].title + '</strong><br>';
+                  listItem1.innerHTML += '<br>';
+                  listItem1.innerHTML += ' Puntaje: <strong>' + json.examenes[i].examenes[j].puntaje + '</strong><br>';
+                  listItem1.innerHTML += '<br>';
+                  listItem1.innerHTML += ' Descripción: <strong>' + json.examenes[i].examenes[j].descripcion + '</strong><br>';
+                  listItem1.innerHTML += '<br>';
+                  if (json.examenes[i].examenes[j].opciones == 'Respuesta corta') {
+                    listItem1.innerHTML += 'Escribe aquí tu respuesta:' + '<br>';
+                    bkLib.onDomLoaded(nicEditors.allTextAreas);
+                    listItem1.innerHTML += '<textarea rows="10" cols="80">' + '</textarea>' + '<br>';
+                    listItem1.innerHTML += '<br>';
+                  }
+                  if (json.examenes[i].examenes[j].opciones == 'Varias opciones') {
+                    var preguntasvarias = json.examenes[i].examenes[j].titleopcion.length;
+                    listItem1.innerHTML += '<br>' + 'Preguntas:' + '<br>';
+                    listItem1.innerHTML += '<br>'
+                    for (var k = 0; k < preguntasvarias; k++) {
+                      listItem1.innerHTML += '<input type="checkbox">' + json.examenes[i].examenes[j].titleopcion[k] + '<br>'
+                      listItem1.innerHTML += '<br>'
+                    }
+                  }
+
+                  myList1.appendChild(listItem1);//asigna primero las preguntas
+                }
+                myList.appendChild(listItem);//asigna el dni alumno
               }
             }
+          })
+          .catch(function (error) {
+            var p = document.createElement('p');
+            p.appendChild(
+              document.createTextNode('Error: ' + error.message)
+            );
+            document.body.insertBefore(p, myList);
+            document.body.insertBefore(p, myList1);
+          });
+      </script>
+      <br />
+    </div>
+  </form>
+</body>
 
-            myList1.appendChild(listItem1);//asigna primero las preguntas
-          }
-        myList.appendChild(listItem);//asigna el dni alumno
-      }}
-    })
-    .catch(function(error) {
-      var p = document.createElement('p');
-      p.appendChild(
-      document.createTextNode('Error: ' + error.message)
-      );
-      document.body.insertBefore(p, myList);
-      document.body.insertBefore(p, myList1);
-    });
-    </script>
-    <br/>
-    </div>  
-    </form>      
-  </body>
 </html>

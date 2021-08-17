@@ -1,47 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <% include partials/head %>
-  </head>
-  <body>
-    <% include partials/navigation %>           
-   
+
+<head>
+  <meta charset="UTF-8">
+  <% include partials/head %>
+</head>
+
+<body>
+  <% include partials/navigation %>
+
     <div class="container p-5">
-    <div class="floating-component">
-    <div class="pregunta">
-      <div class="card card-body text-center"><h3>Exámen</h3></div>
-      <form method="POST" action="/generarexamen" class="card card-body">
-        <div class="form-group">
-          <label>Examen:</label><br>         
-          <input class="seccion" type="text" name="nombre" size= "60" autofocus required>
-        </div>
-      <label>Definir cuantas preguntas por Sección</label> 
-      <div class="form-group">
-        <div class="floating-form-group">
-          <select class="floating-select" name="nombre" onclick="this.setAttribute('value', this.value);">
-              <option value="">Elegir Sección</option> 
-              <%long=(JSON.parse(dats)).secciones.length;%>
-              <%for (index=0; index<long; index++){%> 
-              <option value="<%= (JSON.parse(dats)).secciones[index].nombre;%>"><%= (JSON.parse(dats)).secciones[index].nombre;%></option>
-              <%}%>
-          </select>
-            <span class="highlight"></span>
-        </div>
-      </div>
+      <div class="floating-component">
+        <div class="pregunta">
+          <div class="card card-body text-center">
+            <h3>Exámen</h3>
+          </div>
+          <form method="POST" action="/generarexamen" class="card card-body">
+            <div class="form-group">
+              <label>Examen:</label><br>
+              <input class="seccion" type="text" name="nombre" size="60" autofocus required>
+            </div>
+            <label>Definir cuantas preguntas por Sección</label>
             <div class="form-group">
               <div class="floating-form-group">
-                <label>Cantidad de preguntas:<input class="form-control" type="number" name="cantpreguntas" id="number" min="1" max="100" step="1" placeholder="1"></label>
+                <select class="floating-select" name="nombre" onclick="this.setAttribute('value', this.value);">
+                  <option value="">Elegir Sección</option>
+                  <%long=(JSON.parse(dats)).secciones.length;%>
+                    <%for (index=0; index<long; index++){%>
+                      <option value="<%= (JSON.parse(dats)).secciones[index].nombre;%>">
+                        <%= (JSON.parse(dats)).secciones[index].nombre;%>
+                      </option>
+                      <%}%>
+                </select>
                 <span class="highlight"></span>
               </div>
             </div>
             <div class="form-group">
-              <input type="submit" name="generar" onclick="this.setAttribute('value', this.value);" value="Mostrar exámen" class="floating-select">
+              <div class="floating-form-group">
+                <label>Cantidad de preguntas:<input class="form-control" type="number" name="cantpreguntas" id="number"
+                    min="1" max="100" step="1" placeholder="1"></label>
+                <span class="highlight"></span>
+              </div>
             </div>
-      </form>
-    </div></div></div>
-  </body>
-  <% include partials/footer %>
-  
-  </html>
- 
+            <div class="form-group">
+              <input type="submit" name="generar" onclick="this.setAttribute('value', this.value);"
+                value="Mostrar exámen" class="floating-select">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</body>
+<% include partials/footer %>
+
+</html>

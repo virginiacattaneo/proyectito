@@ -1,48 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Listado Examenes</title>
-    <% include partials/head %>
-  </head>
-  <body>
-    <% include partials/navigation %>
-    
+
+<head>
+  <meta charset="UTF-8">
+  <title>Listado Examenes</title>
+  <% include partials/head %>
+</head>
+
+<body>
+  <% include partials/navigation %>
+
     <div class="container p-5">
-      <div >
-        <div >
-          <div >
-            <div >
+      <div>
+        <div>
+          <div>
+            <div>
               <h2>Listado de examenes Asignados</h2>
               <table class="tableexamenes">
                 <tr>
-                  <th class="th"><p>Fecha</p></th>
-                  <th class="th"><p>Examen</p></th>
-                  <th class="th"><p>Estudiante asignado</p></th>
-                  <th class="th"><p>URL</p></th>
-                  <th class="th"><p>Enviar email</p></th>
+                  <th class="th">
+                    <p>Fecha</p>
+                  </th>
+                  <th class="th">
+                    <p>Examen</p>
+                  </th>
+                  <th class="th">
+                    <p>Estudiante asignado</p>
+                  </th>
+                  <th class="th">
+                    <p>URL</p>
+                  </th>
+                  <th class="th">
+                    <p>Enviar email</p>
+                  </th>
                 </tr>
-                <%long=(JSON.parse(dats)).examenes.length;%>  
-                <%for (index=0; index<long; index++){
-                  %>
-                <tr>
-                  <td class="td"><p><%= (JSON.parse(dats)).examenes[index].fecha;%></p></td>
-                  <td class="td"><p><%= (JSON.parse(dats)).examenes[index].nombre;%></p></td>
-                  <td class="td"><p><%= (JSON.parse(dats)).examenes[index].alumnoasignado;%></p></td>
-                  <td class="td"><p><%= (JSON.parse(dats)).examenes[index].URL;%></p></td>
-                  <td class="td"><p><a href="mailto:<%= (JSON.parse(dats)).examenes[index].email;%>?Subject=<%= (JSON.parse(dats)).examenes[index].nombre;%>&body=Para ingresar al examen copie la siguiente dirección en su navegador http://localhost:3000/alumno.html y acceda con el siguiente c&oacute;digo: <%= (JSON.parse(dats)).examenes[index].id;%>">Enviar examen</a></p></td>
-                </tr>
-              
-                <% 
-              }%> 
-               
+                <%long=(JSON.parse(dats)).examenes.length;%>
+                  <%for (index=0; index<long; index++){ %>
+                    <tr>
+                      <td class="td">
+                        <p>
+                          <%= (JSON.parse(dats)).examenes[index].fecha;%>
+                        </p>
+                      </td>
+                      <td class="td">
+                        <p>
+                          <%= (JSON.parse(dats)).examenes[index].nombre;%>
+                        </p>
+                      </td>
+                      <td class="td">
+                        <p>
+                          <%= (JSON.parse(dats)).examenes[index].alumnoasignado;%>
+                        </p>
+                      </td>
+                      <td class="td">
+                        <p>
+                          <%= (JSON.parse(dats)).examenes[index].URL;%>
+                        </p>
+                      </td>
+                      <td class="td">
+                        <p><a
+                            href="mailto:<%= (JSON.parse(dats)).examenes[index].email;%>?Subject=<%= (JSON.parse(dats)).examenes[index].nombre;%>&body=Para ingresar al examen copie la siguiente dirección en su navegador http://localhost:3000/alumno.html y acceda con el siguiente c&oacute;digo: <%= (JSON.parse(dats)).examenes[index].id;%>">Enviar
+                            examen</a></p>
+                      </td>
+                    </tr>
+
+                    <% }%>
+
               </table>
-           </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <% include partials/footer %>
-   
-  </body>
+
+</body>
+
 </html>

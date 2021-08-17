@@ -1,62 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Listado Examenes</title>
-    <% include partials/head %>
-  </head>
-  <body>
-    <% include partials/navigation %>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Listado Examenes</title>
+  <% include partials/head %>
+</head>
+
+<body>
+  <% include partials/navigation %>
     <div class="container p-5">
       <div class="row">
-        <div >
-          <div >
-            <div >
+        <div>
+          <div>
+            <div>
               <h2>Listado de examenes generados para asignar</h2>
-              
-                <%longA=(JSON.parse(datsA)).alumnos.length;%>  
-                <%long=(JSON.parse(dats)).examenes.length;%>  
-               
-                <%for (index=0; index<long; index++){%>
-                                
-                  <% var hayalumno=(JSON.parse(dats)).examenes[index].alumnoasignado;
-                  if(hayalumno == ""){
-                    %>
-                    <table class="tableexamenes">
-                      <tr>
-                        <th class="th"><p>Fecha</p></th>
-                        <th class="th"><p>Examen</p></th>
-                        <th class="th"><p>Acci&oacute;n</p></th>
-                        <th class="th"><p>Asignar a:</p></th>
-                      </tr>
-                <tr>
-                  <td class="td"><p> <%= (JSON.parse(dats)).examenes[index].fecha;%></p></td>
-                  <td class="td"><p><%= (JSON.parse(dats)).examenes[index].id;%></p></td>
-                  <td class="td"><p><form action="/borrarexamen/<%=(JSON.parse(dats)).examenes[index].id%>" method="get"><button class="btn btn-primary btn-block">Borrar</button></form><p></td>
-                  <td class="td"><p>
-                    <form action="/asignaralumno" method="POST">
-                    <select class="floating-select" name="alumnoasignado" onclick="this.setAttribute('value', this.value);" value="" required>
-                    <option value="">Elegir estudiante</option>
-                  
-                    <%for (index1=0; index1<longA; index1++){%>
-                      <option value="<%= (JSON.parse(datsA)).alumnos[index1].Email;%>"><%= (JSON.parse(datsA)).alumnos[index1].nombrecompleto;%></option>
-                    <% }%>
-                    <input type="hidden" name=idexamen value=<%= (JSON.parse(dats)).examenes[index].id;%>> 
-                  </select>
-                  <input type="submit" name="asignarAlumno" value="Asignar" class="btn btn-primary btn-block">
-                  </form>
-                  </p></td>
-                  </tr>
-               </table>
-              <% 
-                }
-              }%> 
+
+              <%longA=(JSON.parse(datsA)).alumnos.length;%>
+                <%long=(JSON.parse(dats)).examenes.length;%>
+
+                  <%for (index=0; index<long; index++){%>
+
+                    <% var hayalumno=(JSON.parse(dats)).examenes[index].alumnoasignado; if(hayalumno=="" ){ %>
+                      <table class="tableexamenes">
+                        <tr>
+                          <th class="th">
+                            <p>Fecha</p>
+                          </th>
+                          <th class="th">
+                            <p>Examen</p>
+                          </th>
+                          <th class="th">
+                            <p>Acci&oacute;n</p>
+                          </th>
+                          <th class="th">
+                            <p>Asignar a:</p>
+                          </th>
+                        </tr>
+                        <tr>
+                          <td class="td">
+                            <p>
+                              <%= (JSON.parse(dats)).examenes[index].fecha;%>
+                            </p>
+                          </td>
+                          <td class="td">
+                            <p>
+                              <%= (JSON.parse(dats)).examenes[index].id;%>
+                            </p>
+                          </td>
+                          <td class="td">
+                            <p>
+                            <form action="/borrarexamen/<%=(JSON.parse(dats)).examenes[index].id%>" method="get"><button
+                                class="btn btn-primary btn-block">Borrar</button></form>
+                            <p>
+                          </td>
+                          <td class="td">
+                            <p>
+                            <form action="/asignaralumno" method="POST">
+                              <select class="floating-select" name="alumnoasignado"
+                                onclick="this.setAttribute('value', this.value);" value="" required>
+                                <option value="">Elegir estudiante</option>
+
+                                <%for (index1=0; index1<longA; index1++){%>
+                                  <option value="<%= (JSON.parse(datsA)).alumnos[index1].Email;%>">
+                                    <%= (JSON.parse(datsA)).alumnos[index1].nombrecompleto;%>
+                                  </option>
+                                  <% }%>
+                                    <input type="hidden" name=idexamen
+                                      value=<%=(JSON.parse(dats)).examenes[index].id;%>>
+                              </select>
+                              <input type="submit" name="asignarAlumno" value="Asignar"
+                                class="btn btn-primary btn-block">
+                            </form>
+                            </p>
+                          </td>
+                        </tr>
+                      </table>
+                      <% } }%>
             </div>
           </div>
         </div>
       </div>
     </div>
     <% include partials/footer %>
-   
-  </body>
+
+</body>
+
 </html>

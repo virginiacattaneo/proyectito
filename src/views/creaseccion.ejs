@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Cargar Secciones</title>
-    <% include partials/head %>
-  </head>
-  <body>
-    <% include partials/navigation %>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Cargar Secciones</title>
+  <% include partials/head %>
+</head>
+
+<body>
+  <% include partials/navigation %>
 
     <div class="container p-4">
       <div class="row">
@@ -16,15 +18,15 @@
               <h3>Carga de Secciones para Preguntas de Exámen </h3>
             </div>
             <div class="card-body">
-              <form action="/nuevaseccion"  method="post">
+              <form action="/nuevaseccion" method="post">
                 <div class="form-group">
-                 
+
                   <label for="contenido">Nombre de la sección nueva</label><br>
-        
-                          
-                  <input class="seccion" type="text" name="nombre" size= "60" autofocus required>
+
+
+                  <input class="seccion" type="text" name="nombre" size="60" autofocus required>
                 </div>
-             
+
                 <div class="pregunta">
                   <button class="btn btn-primary btn-block">
                     Guardar
@@ -37,6 +39,7 @@
       </div>
     </div>
     <% include partials/footer %>
-   
-  </body>
+
+</body>
+
 </html>

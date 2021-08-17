@@ -1,27 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Error secciones duplicadas</title>
-    <% include partials/head %>
-  </head>
-  <body>
-    <% include partials/navigation %>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Error secciones duplicadas</title>
+  <% include partials/head %>
+</head>
+
+<body>
+  <% include partials/navigation %>
     <div class="container p-5">
       <div class="floating-component">
         <div class="pregunta">
-          <h3><%=dats%></h3>
+          <h3>
+            <%=dats%>
+          </h3>
           <br>
           <br>
-            <p style="color:black";>Haga clik en Aceptar para cargar otra sección</p>
-            <br>
-            <br>
-            <br>
-            <a class="nav-link" href="/error"><p style="color:#000";>Aceptar</p></a>
-           </div>
+          <p style="color:black" ;>Haga clik en Aceptar para cargar otra sección</p>
+          <br>
+          <br>
+          <br>
+          <a class="nav-link" href="/error">
+            <p style="color:#000" ;>Aceptar</p>
+          </a>
+        </div>
       </div>
-    </div>    
-    <% include partials/footer %> 
-    
-  </body>
-  </html>
+    </div>
+    <% include partials/footer %>
+
+</body>
+
+</html>

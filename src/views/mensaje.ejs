@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Msensaje error</title>
-    <% include partials/head %>
-  </head>
-  <body>
-    <% include partials/navigation %>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Msensaje error</title>
+  <% include partials/head %>
+</head>
+
+<body>
+  <% include partials/navigation %>
     <div class="container p-5">
       <div class="floating-component">
         <div class="pregunta">
-          <h3><%=dats%></h3>
+          <h3>
+            <%=dats%>
+          </h3>
           <br>
           <br>
           <br>
-            <p style="color:black";>Haga clik en aceptar para seleccionar otra cantidad</p>
-            <br>
-            <br>
-            <br>
-            <a class="nav-link" href="/aceptarmensaje"><p style="color:#000";>Aceptar</p></a>
-          
+          <p style="color:black" ;>Haga clik en aceptar para seleccionar otra cantidad</p>
+          <br>
+          <br>
+          <br>
+          <a class="nav-link" href="/aceptarmensaje">
+            <p style="color:#000" ;>Aceptar</p>
+          </a>
+
         </div>
       </div>
-    </div>    
-       
-    <% include partials/footer %> 
-    
-  </body>
-  </html>
+    </div>
+
+    <% include partials/footer %>
+
+</body>
+
+</html>
