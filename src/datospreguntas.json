@@ -16,7 +16,7 @@
             "seccion": "Sección 1",
             "title": "Pregunta número 2 de la sección 1",
             "descripcion": "Pregunta a desarrollar...",
-            "opciones": "Respuesta corta",
+            "opciones": "Varias opciones",
             "checkboxtitleopcion": [],
             "titleopcion": []
         },
@@ -38,7 +38,7 @@
             "seccion": "Sección 2",
             "title": "Pregunta número 2 de la sección 2",
             "descripcion": "Descripción de la pregunta ver...",
-            "opciones": "Respuesta corta",
+            "opciones": "Varias opciones",
             "checkboxtitleopcion": [],
             "titleopcion": []
         },
@@ -47,7 +47,7 @@
             "seccion": "Sección 2",
             "title": "Pregunta número 3 de la sección 2",
             "descripcion": "Descripción de la pregunta seguir...",
-            "opciones": "Respuesta corta",
+            "opciones": "Varias opciones",
             "checkboxtitleopcion": [],
             "titleopcion": []
         }

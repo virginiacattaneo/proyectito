@@ -8,7 +8,7 @@
 
 <body>
   <% include partials/navigation %>
-    <div class="fullscreen">
+    
       <div class="container p-5">
         <div class="floating-component">
           <div class="pregunta">
@@ -17,6 +17,10 @@
             <form method="POST" action="/generarexamenfinal" class="card card-body">
               <div class="card card-body text-center">
                 <h3>Exámen</h3>
+              </div>
+              <div class="form-group">
+                <label>Examen:</label><br>
+                <input class="seccion" type="text" name="nombredeexamen" size="60" autofocus required>
               </div>
               <%long=(JSON.parse(dats)).examen.length;%>
                 <%for (index=0; index<long; index++){%>
@@ -77,7 +81,7 @@
           </div>
         </div>
       </div>
-    </div>
+    
     </form>
     <% include partials/footer %>
 </body>

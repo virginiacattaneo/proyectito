@@ -77,7 +77,7 @@ router.post('/generarexamenfinal', (req, res) => {
   var objFecha = new Date();
   var fechaA=objFecha.toLocaleDateString();
   var elObjexamen = {
-    nombre: req.body.nombre, id: uuid(), fecha: fechaA, alumnoasignado:"", URL:"", email:"", examenes: [],
+    nombre: req.body.nombredeexamen, id: uuid(), fecha: fechaA, alumnoasignado:"", URL:"", email:"", examenes: [],
   };
   const dato = fs.readFileSync('src/examen.json', 'utf-8');
   obje = JSON.parse(dato); //now it an object
@@ -162,8 +162,6 @@ router.post('/generarexamen', (req, res) => {
   if (longseccpreg>=max){
     for (i=0; i<max; i++){
       randomIndex = Math.floor(Math.random() * (longseccpreg - min)) + min;// Retorna un entero aleatorio entre min (incluido) y max (excluido)// ¡Usando Math.round() te dará una distribución no-uniforme!
-      console.log(randomIndex);
-      console.log(newobj.seccionespreguntas[randomIndex]);
       if (newobj.seccionespreguntas[randomIndex] != null){
         obje.examen.push(newobj.seccionespreguntas[randomIndex]);
         newobj.seccionespreguntas.splice(randomIndex, 1);//borra la pregunta en la posición randomIndex del arreglo de preguntas//asi controla que no se repita el número aleatorio

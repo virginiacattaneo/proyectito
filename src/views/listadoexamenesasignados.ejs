@@ -28,6 +28,9 @@
                             <p>Fecha</p>
                           </th>
                           <th class="th">
+                            <p>Código</p>
+                          </th>
+                          <th class="th">
                             <p>Examen</p>
                           </th>
                           <th class="th">
@@ -46,6 +49,11 @@
                           <td class="td">
                             <p>
                               <%= (JSON.parse(dats)).examenes[index].id;%>
+                            </p>
+                          </td>
+                          <td class="td">
+                            <p>
+                              <%= (JSON.parse(dats)).examenes[index].nombre;%>
                             </p>
                           </td>
                           <td class="td">
